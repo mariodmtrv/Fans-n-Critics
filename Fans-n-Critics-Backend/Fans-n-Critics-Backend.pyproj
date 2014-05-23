@@ -6,7 +6,7 @@
     <ProjectGuid>c947538e-1ddc-4435-b439-dc9f74dff14b</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>Fans_n_Critics_Backend.py</StartupFile>
-    <SearchPath>ReviewProvision;RatingEngines;MovieFinder;DAL;Parsers;Parsers\imdb\imdbpie</SearchPath>
+    <SearchPath>ReviewProvision;RatingEngines;MovieFinder;DAL;Parsers;Parsers\imdb\imdbpie;RatingEngines\IMDB</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>Fans-n-Critics-Backend</Name>
@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAL\" />
+    <Folder Include="resources\" />
     <Folder Include="Parsers\" />
     <Folder Include="Parsers\imdb\" />
     <Folder Include="Parsers\imdb\imdbpie\" />
@@ -51,6 +52,7 @@
     <Folder Include="RatingEngines\" />
     <Folder Include="RatingEngines\IMDB\" />
     <Folder Include="RatingEngines\RottenTomato\" />
+    <Folder Include="resources\logos\" />
     <Folder Include="ReviewProvision\" />
   </ItemGroup>
   <ItemGroup>

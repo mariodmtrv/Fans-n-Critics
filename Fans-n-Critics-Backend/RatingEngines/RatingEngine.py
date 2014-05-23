@@ -1,16 +1,18 @@
 class RatingEngine():
+    # Add JSON handling functionality
     """Represents a voting engine system
        like IMDB or RottenTomato"""
-    def get_rating():
+    @property
+    def rating(self):
         pass
-    @classmethod
-    def get_votes_count():
+    @property
+    def votes_count(self):
+        print("Votes")
+    @property
+    def engine_name(self):
         pass
-    @classmethod
-    def get_engine_name():
-        pass
-    @classmethod
-    def get_engine_logo():
+    @property
+    def engine_logo(self):
         pass
 
 
