@@ -12,7 +12,7 @@ class IMDBRatingEngine(RatingEngine):
         self.__rating = movie.rating
         self.__votes = movie.votes
         self.__name = "IMDB"
-        self.__logo = 
+        self.__logo = "resources/logos/imdb"
     def rating(self):
         return self.__rating
     def engine_logo(self):

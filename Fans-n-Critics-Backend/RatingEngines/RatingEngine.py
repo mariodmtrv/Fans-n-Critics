@@ -7,7 +7,7 @@ class RatingEngine():
         pass
     @property
     def votes_count(self):
-        print("Votes")
+        pass
     @property
     def engine_name(self):
         pass

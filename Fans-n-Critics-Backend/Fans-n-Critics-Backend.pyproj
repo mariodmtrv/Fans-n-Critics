@@ -21,6 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Parsers\google_search.py" />
     <Compile Include="Parsers\imdb\imdbpie\imdbpie.py" />
     <Compile Include="Parsers\imdb\imdbpie\__init__.py" />
     <Compile Include="Parsers\imdb\setup.py" />
@@ -33,15 +34,22 @@
     <Compile Include="Parsers\imdb\tests\trailer_test.py" />
     <Compile Include="Fans_n_Critics_Backend.py" />
     <Compile Include="MovieFinder\MovieSearch.py" />
+    <Compile Include="Parsers\rotten-tomato\rottentomatoes\rottentomatoes.py" />
+    <Compile Include="Parsers\rotten-tomato\rottentomatoes\rottentomatoes_api_key.py" />
+    <Compile Include="Parsers\rotten-tomato\rottentomatoes\__init__.py" />
     <Compile Include="RatingEngines\IMDB\IMDBRatingEngine.py" />
     <Compile Include="RatingEngines\RatingEngine.py" />
     <Compile Include="RatingEngines\RottenTomato\RottenTomatoRatingEngine.py" />
     <Compile Include="ReviewProvision\DescriptionProvider.py" />
     <Compile Include="ReviewProvision\ReviewCrawler.py" />
     <Compile Include="ReviewProvision\ReviewProvider.py" />
+    <Compile Include="tests\ReviewCrawlerTests.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAL\" />
+    <Folder Include="tests\" />
+    <Folder Include="Parsers\rotten-tomato\" />
+    <Folder Include="Parsers\rotten-tomato\rottentomatoes\" />
     <Folder Include="resources\" />
     <Folder Include="Parsers\" />
     <Folder Include="Parsers\imdb\" />
