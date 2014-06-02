@@ -3,11 +3,9 @@ import json
 import urllib.request
 import urllib.parse
 #from html.parser import HTMLParser
-
-
 class WebCrawler():
     '''
-    Performs a Google search for the given query and collects the top results
+    Performs a Google search for the given movie search and collects the top results
     '''
 
     def __init__(self, query):
@@ -27,7 +25,7 @@ class WebCrawler():
         for result in results:
             self.__urls.append(result['url'])
         if len(self.__urls) == 0:
-            print("Failed")
+            print ("Failed")
 
     def get_result_url(self, index):
         return self.__urls.__getitem__(index)

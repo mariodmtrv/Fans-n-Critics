@@ -8,8 +8,9 @@
 #rt = IMDBRatingEngine("tt0071853")
 #print(rt.rating)
 #print(rt.votes_count)
-from movie_data_extraction.Parsers import ReviewParser, WebCrawler
 
-search = WebCrawler("django unchained review")
-rev = ReviewParser.extract_review(search.get_result_url(3))
-print(rev)
+#from MetaCriticsEngine import MetaCriticsEngine
+
+#x = MetaCriticsEngine("django unchained")
+#print(x.rating())
+

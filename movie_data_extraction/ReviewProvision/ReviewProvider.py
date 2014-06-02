@@ -1,11 +1,18 @@
+import nltk
 class ReviewProvider(object):
-    """Defines a well known review provider"""
+    """Collects the data from a review url and produces an evaluation result"""
+    def __init__(self, article_url):
+        self.__article_url = article_url
+        self.__rating = 0
+    @property
+    def rating(self):
+        return self.__rating
 
-    def get_rating(self):
-        pass
-
-    def get_article(self, movie_name):
-        pass
-
-    def create_article_entry(self):
-        pass
+    def __article(self):
+        '''
+        Extracts the article text from the URL
+        '''
+        return self.__article()
+    @property
+    def article_url(self):
+        return self.__article_url

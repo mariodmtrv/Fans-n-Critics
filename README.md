@@ -29,7 +29,7 @@ the movie is worth.
     
 </ul>
 
-*Public launch will be in June 2014
+*Public launch will be in Mid 2014
 
 
 <h4>Everything else</h4>

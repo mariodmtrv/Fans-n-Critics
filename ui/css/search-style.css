@@ -8,7 +8,7 @@
                                                                   
 */
 
-/* BASIC RESET */
+/* BASIC RESET 
 body, div, img, p {
     padding: 0;
     margin: 0;
@@ -18,13 +18,13 @@ a img {
     border: 0
 }
 
-/* HTML ELEMENTS */
+/* HTML ELEMENTS 
 body {
     font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif;
     background-color: #efefef;
     background-image: url(../images/bg.jpg);
 }
-
+*/
 /* COMMON CLASSES */
 .break {
     clear: both;
@@ -32,8 +32,8 @@ body {
 
 /* SEARCH FORM */
 #searchform {
-    margin: 50px 200px;
-    font-size: 18px;
+    margin: 5px 5px;
+    font-size: 14px;
 }
 
 #searchform div {
