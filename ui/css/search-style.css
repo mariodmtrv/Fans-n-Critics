@@ -47,7 +47,7 @@ body {
 }
 
 #suggestions {
-    position: relative;
+    /*position: relative;*/
     left: 235px;
     width: 320px;
     display: none;

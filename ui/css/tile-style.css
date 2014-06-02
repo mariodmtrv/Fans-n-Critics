@@ -347,12 +347,13 @@ html {
 }
 
 body {
-    width: 100%;
+    width: 90%;
     height: 100%;
     line-height: 1.5;
     font-family: 'Lato', sans-serif;
     font-weight: 300;
     font-size: 16px;
+	margin:0 5%;
    /* background-color: #eee;
    background: url(../images/1.png) left top no-repeat;*/
     background-size: 100% 100%
@@ -361,7 +362,7 @@ body {
 ul {
     list-style-type: none
 }
-
+/*
 header {
     background-color: rgba(0, 0, 0, 0.2);
     height: 35px;
@@ -380,7 +381,7 @@ header a {
     color: inherit;
     font-size: 17px
 }
-
+*/
 .demo-wrapper {
     padding: 2em .5em;
     width: 100%;
@@ -388,12 +389,13 @@ header a {
     -ms-perspective: 3300px;
     -o-perspective: 3300px;
     perspective: 3300px;
+	clear:both;
     position: relative
 }
 
 .dashboard {
-    margin: 0 auto;
-    width: 75%;
+    margin: 0 0;
+    width: 100%;
     padding: 1em;
     /*
     -webkit-transform: translateX(200px);
@@ -537,12 +539,12 @@ header a {
     color: white;
     font-size: 1em;
     text-align: center;
-    height: 9em;
+    height: 12em;
     font-weight: 300;
     overflow: hidden;
     cursor: pointer;
     position: relative;
-    background-color: #fff;
+    background-color: #df691a;
     color: #333;
     position: relative;
     -webkit-transition: background-color 0.2s ease-out;
@@ -561,7 +563,7 @@ header a {
 
 .tile img {
     width: 100%;
-    height: 70%
+    height: 90%
 }
 
 .tile-caption {

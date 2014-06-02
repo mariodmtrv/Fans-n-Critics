@@ -7,6 +7,27 @@
  * Based on Bootstrap
 */
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+#ratingEnginesData img {
+	height:2.5em;
+	/*display:block;*/
+	}
+	#ratingEnginesData div{
+	margin:5px;
+	width:6.5em;
+	height:6.5em;
+	background-color:#3d4954
+	}
+.rating,.engineVotes{
+	
+	text-align: center;
+	
+}
+.rating{
+font-size:1.2em
+}
+.engineVotes{
+font-size:0.8em
+}
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -14,6 +35,7 @@ html {
 }
 body {
   margin: 0;
+
 }
 article,
 aside,
@@ -4365,6 +4387,7 @@ a.list-group-item.active > .badge,
   padding: 30px;
   margin-bottom: 30px;
   color: inherit;
+  
   background-color: #4e5d6c;
 }
 .jumbotron h1,
@@ -4384,8 +4407,8 @@ a.list-group-item.active > .badge,
 }
 @media screen and (min-width: 768px) {
   .jumbotron {
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-top: 18px;
+   /* padding-bottom: 18px;*/
   }
   .container .jumbotron {
     padding-left: 60px;

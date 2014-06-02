@@ -31,7 +31,8 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">This week</a></li>
       <li><a href="#">Top 250</a></li>
-      <li class="dropdown">
+<!--    
+	<li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="#">Action</a></li>
@@ -43,13 +44,14 @@
           <li><a href="#">One more separated link</a></li>
         </ul>
       </li>
+	  -->
     </ul>
     <div class="navbar-form navbar-left">
 
     <!--
 Here comes fancy search	
 -->
-
+<div>
     <form id="searchform">
         <div>
             <input type="text" size="30" value="" placeholder="Search" id="inputString"
@@ -57,13 +59,13 @@ Here comes fancy search
         </div>
         <div id="suggestions"></div>
     </form>
-
+</div>
     </div>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"> Петър Стефанов</a></li>
+      <li><a  id = "userName" style = "font-size:1.2em; font-style:strong">John Cleese</a></li>
       <li class="dropdown">
 	  <!-- User account details-->
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<img src = ""/> <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account </a>
         <ul class="dropdown-menu">
          <li><a href="#">Settings</a></li>
           <li><a href="#">Preferences</a></li>
@@ -79,72 +81,124 @@ Here comes fancy search
 	
 	 <!-- Movie view-->
 	<section>
-	<article id = "movieContent">
-
-<div>
-    Dataa 1</br>
-    Dataa 1</br>
-    Dataa 1</br>
-    Dataa 1</br>
-    Dataa 1
+<article id = "mainDisplayContent">
+ <div id = "movieContent" style = "float:left;width:72%;">
+<div class="jumbotron" style = "margin-left:5%;height:100%">
+		<div id = "movieInformation" style = "">
+		
+		  <h2 id = "movieName"style = "margin-right:15%">Monty Python and the Holy Grail</h2>
+		  
+		  <div id = "moviePoster" style = "float:left;min-width:25%;">
+		  <img src = "images/monty.jpg" style = "width:100%">
+		  </div>
+		  <div id="dataContent" style = "margin-left:5%;width:70%;float:right">
+		  <p id="releaseDate" style= "font-size:1.1em"><b>Release date:</b> <span style= "padding:5px">15-June-2001</span></p>
+			   <div id ="textContent" style = "width:95%">
+			   <div id = "calculatedRating" class = "btn btn-success" style = "float:right;text-align:center; padding-bottom:1em">
+			   <h1>8.5</h1>
+			   
+			   </div>
+			   <div id = "shortInfoTabs" style = "float:left;width:73%;">
+							<ul class="nav nav-tabs">
+							  <li class="active"><a href="#summary" data-toggle="tab">Summary</a></li>
+							  <li class=""><a href="#starring" data-toggle="tab">Starring</a></li>
+							  <li class=""><a href="#videos" data-toggle="tab">Videos</a></li>
+							</ul>
+							<div id="myTabContent" class="tab-content" style = "padding-left:0.8em">
+							  <div class="tab-pane fade active in" id="summary">
+								<p style = "font-size:1.05em">A theatrical re-release of the 1975 Python classic, 
+								with a new print, additional footage, and remastered soundtrack.
+								</p>
+							  </div>
+							  <div class="tab-pane fade" id="starring">
+								<p style = "font-size:1.05em"> Eric Idle, Graham Chapman, John Cleese, Michael Palin, Terry Gilliam, Terry Jones</p>
+							  </div>
+							</div>
+				</div>
+				</div>
+			<!--  <div class="divClass" name ="stars" data-webRating="2.5" data-webRatingN="5" data-webRatingArg='{"type":"book","uid":12}'></div> -->
+			<!--    <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+		  <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+		  -->
+		
+		<div id="ratingEnginesData" style = "clear:both">
+	    
+				<div class = "btn btn-default" style = "float:left;">
+					<img src = "images/imdb-logo.png">
+					<br/>
+					<span class = "rating"> 8.3 </span>
+					<br/>
+					<span class = "engineVotes"> 32 767 votes </span>
+				</div>
+				
+				<div class = "btn btn-default" style = "float:left">
+					<img src = "images/rottentomatoes-logo.png">
+					<br/>
+					<span class = "rating"> 79 </span>
+					<br/>
+					<span class = "engineVotes"> 11 010 votes </span>
+				</div>
+				
+				<div class = "btn btn-default" style = "float:left">
+					<img src = "images/metacritic-logo.jpg">
+					<br/>
+					<span class = "rating"> 81 </span>
+					<br/>
+					<span class = "engineVotes">6 023 votes </span>
+				</div>
+				
+		</div>
+		<div class = "btn-group-vertical" style = "float:right;margin-right:1.45em;text-align:center;background-color:#3d4954;width:8em; color:#df691a">
+					<b style = "font-size:1.5em">MY &nbsp; VOTE</b>
+					<p style = "font-size:1.5em">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+					<h4 class="btn btn-default" style = "background-color:#2b3e50" >Watchlist<h4>
+					<!---->
+				</div>
+		
+		</div>
+		
+		<table id = "ratingsTable" class="table table-striped table-hover " style = "background-color:inherit;width:90%;margin-right:15%;font-size:0.9em">
+		  <thead>
+			<tr>
+			  <th>#</th>
+			  <th>Review Url</th>
+			  <th style = "width:25%">Published Date</th>
+			  <th style = "width:10%">Rating</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr class="success">
+			  <td>1</td>
+			  <td><a href = "linkadrrress"> linkadrrress</td>
+			  <td>15-May-2014</td>
+			  <td>8.4</td>
+			</tr>
+			<tr class="danger">
+			  <td>2</td>
+			  <td><a href = "linkadrrress"> linkadrrress</td>
+			  <td>24-April-2014</td>
+			  <td>3.2</td>
+			</tr>
+			<tr class="warning">
+			 <td>2</td>
+			  <td><a href = "linkadrrress"> linkadrrress</td>
+			  <td>3-June-2014</td>
+			  <td>6.7</td>
+			</tr>
+		  </tbody>
+		</table> 
 </div>
-	<!-- Content goes here-->
-	  <!-- Movie poster-->
-	   <!-- Movie title-->
-	   <!-- Summary-->
-	   
-	   <!-- User ratings and viewed-->
-	   <div class="divClass" name ="stars" data-webRating="2.5" data-webRatingN="5" data-webRatingArg='{"type":"book","uid":12}'></div>
-	   <!-- Engine ratings-->
-	   
-	   
-	  <!-- Movie reviews links-->
-<!--
-<table class="table table-striped table-hover ">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Review Url</th>
-      <th>Published Date</th>
-      <th>Overall rating</th>
-    </tr>
-  </thead>
-  <tbody>
-  <!--  
-  <tr class="info">
-      <td>3</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-	
-    <tr class="success">
-      <td>4</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="danger">
-      <td>5</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="warning">
-      <td>6</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-  </tbody>
-</table> 
--->
+</div>
+</div>
+<aside id = "additionalMenu" style = "float:right;min-width:20%;max-width:25%;margin-right:5%; background-color:#df691a;">
+<img src = "images/vertical-banner.png">
+</aside>
 </article>
 	  
-	<article id = "liveTiles">
+	<article id = "liveTiles" >
 			<div class="demo-wrapper">
 				<!-- classnames for the pages should include: 1) type of page 2) page name-->
-			<!--	<div class="s-page random-restored-page">
+				<div class="s-page random-restored-page">
 					<h2 class="page-title">Some minimized App</h2>
 
 					<div class="close-button s-close-button">x</div>
@@ -154,7 +208,6 @@ Here comes fancy search
 
 					<div class="close-button s-close-button">x</div>
 				</div>
-				-->
 				<div class="dashboard clearfix">
 					<ul class="tiles">
 						<div class="col1 clearfix">
@@ -169,7 +222,13 @@ Here comes fancy search
 								<div><p>...truly mesmerizing...</p></div>
 								<div><p>...universally cool...</p></div>
 							</li>
-
+							<li class="tile tile-big tile-4 fig-tile" data-page-type="r-page" data-page-name="random-r-page">
+								<figure>
+									<img src="images/blue.jpg"/>
+									<figcaption class="tile-caption caption-left">Game of thrones</br></br></br>Yesterday Night</br>
+										Rating &nbsp; &#9734;&#9734;&#9734;&#9734; </figcaption>
+								</figure>
+							</li>
 
 						</div>
 
@@ -185,22 +244,43 @@ Here comes fancy search
 										Rating &nbsp; &#9734;&#9734;&#9734;&#9734; </figcaption>
 								</figure>
 							</li>
+							<li class="tile tile-big tile-5 slideTextLeft" data-page-type="r-page" data-page-name="random-r-page">
+								<div><p>...truly mesmerizing...</p></div>
+								<div><p>...universally cool...</p></div>
+							</li>
+						</div>
+						<div class="col3 clearfix">
+							<li class="tile tile-big tile-6 slideTextLeft" data-page-type="r-page" data-page-name="random-r-page">
+								<div><p>passion</p></div>
+								<div><p>destruction</p></div>
+							</li>
+							<li class="tile tile-big tile-4 fig-tile" data-page-type="r-page" data-page-name="random-r-page">
+								<figure>
+									<img src="images/blue.jpg"/>
+									<figcaption class="tile-caption caption-left">Game of thrones</br></br></br>Yesterday Night</br>
+										Rating &nbsp; &#9734;&#9734;&#9734;&#9734; </figcaption>
+								</figure>
+							</li>
+							<li class="tile tile-big tile-5 slideTextLeft" data-page-type="r-page" data-page-name="random-r-page">
+								<div><p>...truly mesmerizing...</p></div>
+								<div><p>...universally cool...</p></div>
+							</li>
 						</div>
 					</ul>
 				</div>
 			</div>
 	</article>
 	</section>
-	
+<!--	
 	<aside>
 		<div id = "questions">
 		</div>
 		<div id = "ads">
 		</div>
 	</aside>
-
+-->
 	<footer>
-		<p>Some rights reserved 2014 Mario Dimitrov</p>
+		<p style = "text-align:center">2014 Mario Dimitrov</p>
 	</footer>
 	<script>
 	//Initialize the star rating
