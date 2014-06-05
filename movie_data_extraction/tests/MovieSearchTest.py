@@ -1,5 +1,5 @@
 __author__ = 'mario-dimitrov'
-from MovieSearch import MovieSearch
+from MovieFinder.MovieSearch import MovieSearch
 import unittest
 
 

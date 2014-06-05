@@ -1,8 +1,7 @@
 __author__ = 'mario-dimitrov'
 
 import unittest
-from MovieFinder.DescriptionProvider import DescriptionProvider
-
+from movie_data_extraction.MovieFinder.DescriptionProvider import DescriptionProvider
 class DescriptionProviderTest(unittest.TestCase):
     def test_movie_name_extraction(self):
         provider = DescriptionProvider("tt0071853")
@@ -14,8 +13,6 @@ class DescriptionProviderTest(unittest.TestCase):
         actual= provider.get_genre_list();
         expected = ['Adventure', 'Comedy', 'Fantasy']
         self.assertEqual(actual,expected)
-
-
 
 if __name__ == '__main__':
     unittest.main()

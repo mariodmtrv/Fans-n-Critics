@@ -1,7 +1,9 @@
-class RatingEngine():
+class RatingEngine:
     # Add JSON handling functionality
     """Represents a voting engine system
        like IMDB or RottenTomatoes"""
+    def __init__(self):
+        print("Hello")
     @property
     def rating(self):
         pass

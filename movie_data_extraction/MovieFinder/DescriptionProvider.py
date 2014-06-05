@@ -1,4 +1,4 @@
-from APIs.imdb.imdbpie import Imdb
+from  APIs.imdb.imdbpie.imdbpie import Imdb
 class DescriptionProvider():
     """Defines the provider of the movie description"""
     def __init__(self, movie_id):

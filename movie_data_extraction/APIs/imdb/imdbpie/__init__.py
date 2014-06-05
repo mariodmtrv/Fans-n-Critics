@@ -1,1 +1,1 @@
-from .imdbpie import Imdb
+from APIs.imdb.imdbpie import imdbpie

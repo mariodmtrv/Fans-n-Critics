@@ -1,8 +1,9 @@
-from APIs.imdb.imdbpie import *
-from RatingEngine import RatingEngine
+from APIs.imdb.imdbpie.imdbpie import Imdb
+from RatingEngines import RatingEngine
 class IMDBRatingEngine(RatingEngine):
     """Represents the IMDB rating engine and its results for a movie"""
     def __init__(self, movie_id):
+        RatingEngine.__init__(self)
         self.__movie_id = movie_id
         imdb = Imdb()
         try: 
@@ -13,6 +14,8 @@ class IMDBRatingEngine(RatingEngine):
         self.__votes = movie.votes
         self.__name = "IMDB"
         self.__logo = "resources/logos/imdb"
+        print(self.__rating)
+
     def rating(self):
         return self.__rating
     def engine_logo(self):
