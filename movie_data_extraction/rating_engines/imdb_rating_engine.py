@@ -1,9 +1,9 @@
 from APIs.imdb.imdbpie.imdbpie import Imdb
-from RatingEngines import RatingEngine
-class IMDBRatingEngine(RatingEngine):
+from rating_engines import rating_engine
+class IMDBRatingEngine(rating_engine):
     """Represents the IMDB rating engine and its results for a movie"""
     def __init__(self, movie_id):
-        RatingEngine.__init__(self)
+        rating_engine.__init__(self)
         self.__movie_id = movie_id
         imdb = Imdb()
         try: 

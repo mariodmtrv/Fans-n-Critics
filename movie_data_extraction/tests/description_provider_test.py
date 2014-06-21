@@ -1,7 +1,7 @@
 __author__ = 'mario-dimitrov'
 
 import unittest
-from movie_data_extraction.MovieFinder.DescriptionProvider import DescriptionProvider
+from movie_data_extraction.movie_finder.description_provider import DescriptionProvider
 class DescriptionProviderTest(unittest.TestCase):
     def test_movie_name_extraction(self):
         provider = DescriptionProvider("tt0071853")

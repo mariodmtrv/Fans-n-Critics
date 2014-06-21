@@ -1,7 +1,7 @@
 __author__ = 'mario-dimitrov'
 
 import unittest
-from RatingEngines.IMDBRatingEngine import IMDBRatingEngine
+from rating_engines.imdb_rating_engine import IMDBRatingEngine
 
 class IMDBTest(unittest.TestCase):
     def test_rating_extraction(self):

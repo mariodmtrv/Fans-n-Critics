@@ -1,5 +1,5 @@
 import unittest
-from movie_data_extraction.ReviewProvision.ReviewCrawler import ReviewCrawler
+from movie_data_extraction.review_provision.review_crawler import ReviewCrawler
 import urllib
 class ReviewCrawlerTest(unittest.TestCase):
     def test_search_url_extraction(self):
