@@ -1,0 +1,27 @@
+<div id="ratingEnginesData" style="clear:both;background: white">
+    {% for engine_data in ratings %}
+        <div class="btn btn-default" style="float:left;">
+            <img src="{{ engine_data.link_address }}">
+            <br/>
+            <span class="rating"> {{ engine_data.rating }} </span>
+            <br/>
+            <span class="engineVotes"> {{ engine_data.votes }} votes </span>
+        </div>
+    {% endfor %}
+</div>
+<!--			<div class = "btn btn-default" style = "float:left">
+                <img src = "images/rottentomatoes-logo.png">
+                <br/>
+                <span class = "rating"> 79 </span>
+                <br/>
+                <span class = "engineVotes"> 11 010 votes </span>
+            </div>
+
+            <div class = "btn btn-default" style = "float:left">
+                <img src = "images/metacritic-logo.jpg">
+                <br/>
+                <span class = "rating"> 81 </span>
+                <br/>
+                <span class = "engineVotes">6 023 votes </span>
+            </div>
+            -->

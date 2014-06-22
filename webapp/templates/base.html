@@ -1,0 +1,84 @@
+<html>
+<head>
+    <title>Fans+ Critics Your movie concierge</title>
+    <link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/stars.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../static/css/tile-style.css"/>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.webRating.js"></script>
+    <script src="../static/js/tiles.js"></script>
+    <script src="../static/js/modernizr-1.5.min.js"></script>
+    <script src="../static/js/stars.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/search-style.css"/>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="../static/js/search.js"></script>
+</head>
+<body>
+<header>
+    <!--Navigation bar-->
+    <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="../static/images/product/Fans+Critics-Logo.png"
+                                                  style="height:50px"></a>
+        </div>
+        <div class="navbar-collapse collapse navbar-inverse-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">This week</a></li>
+                <li><a href="#">Top 250</a></li>
+            </ul>
+            <div class="navbar-form navbar-left">
+
+
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a id="userName" style="font-size:1.2em;">John Cleese</a></li>
+                <li class="dropdown">
+                    <!-- User account details-->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#">Preferences</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Log out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--End Navigation bar-->
+</header>
+<article id="mainDisplayContent">
+    {% load movie_article %}
+    {% generate_movie_data movie_id %}
+</article>
+<aside>
+    {% load aside %}
+    {% get_aside_content "../static/images/vertical-banner.png" %}
+</aside>
+<!-- Movie view-->
+<section>
+    {% load recommendations %}
+    {% recommend user %}
+</section>
+}
+<!--	
+	<aside>
+		<div id = "questions">
+		</div>
+		<div id = "ads">
+		</div>
+	</aside>
+-->
+<footer>
+    <p style="text-align:center">2014 Mario Dimitrov</p>
+</footer>
+</body>
+</html>

@@ -1,5 +1,6 @@
 from RatingEngine import RatingEngine
 import metacritics
+
 '''
 class MetaCriticsEngine(RatingEngine):
     """Represents the IMDB rating engine and its results for a movie"""

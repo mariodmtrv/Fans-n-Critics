@@ -1,0 +1,50 @@
+<h2 id="movieName" style="margin-right:15%;clear:both">{{ movie.title }}</h2>
+
+<div id="moviePoster" style="float:left;min-width:25%;">
+    <img src="{{ movie.poster }}" style="width:100%">
+</div>
+<div id="dataContent" style="margin-left:2%;width:69%;float:right">
+    <p id="releaseDate" style="font-size:1.1em;"><b>Release date:</b> <span
+            style="padding:5px">{{ movie.released }}</span></p>
+
+    <div id="textContent" style="width:80%">
+        <div id="shortInfoTabs" style="float:left;width:80%;">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#summary" data-toggle="tab">Summary</a></li>
+                <li class=""><a href="#starring" data-toggle="tab">Starring</a></li>
+                <li class=""><a href="#videos" data-toggle="tab">Videos</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content" style="padding-left:0.8em">
+                <div class="tab-pane fade active in" id="summary">
+                    <p style="font-size:1.05em">
+                        {{ movie.summary }}
+                    </p>
+                </div>
+                <div class="tab-pane fade" id="starring">
+                    <p style="font-size:1.05em"> {{ movie.starring }}</p>
+                </div>
+            </div>
+            {% load rating_engines %}
+            {% generate_rating_data movie_id %}
+        </div>
+    </div>
+    <div id="overallAndPersonal">
+        <div id="calculatedRating" class="btn btn-{{ movie.color_code }}"
+             style="float:right;text-align:center; padding-bottom:1em">
+            <h1>{{ movie.overall_rating }}</h1>
+
+        </div>
+        <div class="btn-group-vertical"
+             style="float:right;text-align:center;background-color:#3d4954;width:7.95em; color:#df691a">
+            <b style="font-size:1.5em">MY &nbsp; VOTE</b>
+					<span class="star-rating">
+                      <input type="radio" name="rating" value="1"><i></i>
+                      <input type="radio" name="rating" value="2"><i></i>
+                      <input type="radio" name="rating" value="3"><i></i>
+                      <input type="radio" name="rating" value="4"><i></i>
+                      <input type="radio" name="rating" value="5"><i></i>
+                    </span>
+            <!--<h4 class="btn btn-default" style = "background-color:#2b3e50" >Watchlist</h4>-->
+        </div>
+    </div>
+</div>

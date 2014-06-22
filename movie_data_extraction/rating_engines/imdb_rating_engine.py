@@ -1,12 +1,15 @@
 from APIs.imdb.imdbpie.imdbpie import Imdb
 from rating_engines import rating_engine
+
+
 class IMDBRatingEngine(rating_engine):
     """Represents the IMDB rating engine and its results for a movie"""
+
     def __init__(self, movie_id):
         rating_engine.__init__(self)
         self.__movie_id = movie_id
         imdb = Imdb()
-        try: 
+        try:
             movie = imdb.find_movie_by_id(self.__movie_id)
         except Exception:
             print("Movie was not found")
@@ -18,9 +21,12 @@ class IMDBRatingEngine(rating_engine):
 
     def rating(self):
         return self.__rating
+
     def engine_logo(self):
         return self.__logo
+
     def engine_name(self):
         return self.__name
+
     def votes_count(self):
         return self.__votes

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block movie_search %}
+    <div id="activeSearch">
+        <form method="get" action="/search/" id="searchform">
+            <div>
+                <input type="text" size="30" value="" placeholder="Search" name='q' id="inputString"
+                       onkeyup="submit"/>
+            </div>
+            <div id="suggestions">
+                {% for result in alternatives %}
+                    <script>  $('#suggestions').fadeIn();</script>
+                    <a href="'"></a>
+                    <img src="{{ result.poster }}" alt=""/>
+                    <span class="searchheading">{{ result.title }} </span>
+                    <span>{{ result.year }}</span></a>';
+                {% endfor %}
+
+            </div>
+        </form>
+    </div>
+{% endblock %}

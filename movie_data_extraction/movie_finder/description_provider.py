@@ -1,6 +1,9 @@
-from  APIs.imdb.imdbpie.imdbpie import Imdb
+from  movie_data_extraction.APIs.imdb.imdbpie import Imdb
+
+
 class DescriptionProvider():
     """Defines the provider of the movie description"""
+
     def __init__(self, movie_id):
         self.__movie_id = movie_id
         imdb = Imdb()
@@ -9,11 +12,15 @@ class DescriptionProvider():
         self.__description = movie.plot_outline
         self.__genres = movie.genres
         self.__poster = movie.poster_url
+
     def get_name(self):
         return self.__title
-    def get_short_description(self): 
+
+    def get_short_description(self):
         return self.__description
+
     def get_genre_list(self):
         return self.__genres
+
     def get_poster_url(self):
         return self.__poster

@@ -1,0 +1,51 @@
+<article id="liveTiles">
+    <div class="demo-wrapper">
+        <!-- classnames for the pages should include: 1) type of page 2) page name-->
+        <div class="dashboard clearfix">
+            <ul class="tiles">
+                <div class="col1 clearfix">
+                    {% for movie in rec_column_one %}
+                        <li class="tile tile-big tile-4 fig-tile" data-page-type="r-page"
+                            data-page-name="random-r-page">
+                            <figure>
+                                <img src="{{ movie.image }}"/>
+                                <figcaption class="tile-caption caption-left"> {{ movie.title }} </br></br>
+                                    <p> {{ movie.description }} </p></br></br>Rating {{ movie.rating }} </figcaption>
+                            </figure>
+                        </li>
+                    {% endfor %}
+                </div>
+
+
+                <div class="col2 clearfix">
+                    {% for movie in rec_column_two %}
+                        <li class="tile tile-big tile-4 fig-tile" data-page-type="r-page"
+                            data-page-name="random-r-page">
+                            <figure>
+                                <img src="{{ movie.image }}"/>
+                                <figcaption class="tile-caption caption-left"> {{ movie.title }} </br></br>
+                                    <p> {{ movie.description }} </p></br></br>Rating {{ movie.rating|safe }}
+                                </figcaption>
+                            </figure>
+                        </li>
+                    {% endfor %}
+                </div>
+
+
+                <div class="col3 clearfix">
+                    {% for movie in rec_column_three %}
+                        <li class="tile tile-big tile-4 fig-tile" data-page-type="r-page"
+                            data-page-name="random-r-page">
+                            <figure>
+                                <img src="{{ movie.image }}"/>
+                                <figcaption class="tile-caption caption-left"> {{ movie.title }} </br></br>
+                                    <p> {{ movie.description }} </p></br></br>Rating {{ movie.rating }} </figcaption>
+                            </figure>
+                        </li>
+                    {% endfor %}
+                </div>
+
+            </ul>
+        </div>
+    </div>
+</article>

@@ -1,1 +1,85 @@
-{"responseData": {"results":[{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://www.rottentomatoes.com/m/monty_python_and_the_holy_grail/","url":"http://www.rottentomatoes.com/m/monty_python_and_the_holy_grail/","visibleUrl":"www.rottentomatoes.com","cacheUrl":"http://www.google.com/search?q\u003dcache:RM3aDAkY-BwJ:www.rottentomatoes.com","title":"\u003cb\u003eMonty\u003c/b\u003e Python and the Holy Grail - Rotten Tomatoes","titleNoFormatting":"Monty Python and the Holy Grail - Rotten Tomatoes","content":"Critics Consensus: A cult classic as gut-bustingly hilarious as it is blithely \nridiculous, \u003cb\u003eMonty\u003c/b\u003e Python and the Holy Grail has lost none of..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"https://www.commonsensemedia.org/movie-reviews/monty-python-and-the-holy-grail","url":"https://www.commonsensemedia.org/movie-reviews/monty-python-and-the-holy-grail","visibleUrl":"www.commonsensemedia.org","cacheUrl":"http://www.google.com/search?q\u003dcache:-QD-ujBSnUQJ:www.commonsensemedia.org","title":"\u003cb\u003eMonty\u003c/b\u003e Python and the Holy Grail Movie Review","titleNoFormatting":"Monty Python and the Holy Grail Movie Review","content":"Jun 3, 2007 \u003cb\u003e...\u003c/b\u003e Is \u003cb\u003eMonty\u003c/b\u003e Python and the Holy Grail OK for your child? Read Common Sense \nMedia\u0026#39;s movie review to help you make informed decisions."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://www.reddit.com/r/funny/comments/1f8f6z/monty_pythons_review_of_hitchhikers_guide_to_the/","url":"http://www.reddit.com/r/funny/comments/1f8f6z/monty_pythons_review_of_hitchhikers_guide_to_the/","visibleUrl":"www.reddit.com","cacheUrl":"http://www.google.com/search?q\u003dcache:oPT-zHngb6cJ:www.reddit.com","title":"\u003cb\u003eMonty Python\u0026#39;s review\u003c/b\u003e of “Hitchhiker\u0026#39;s Guide To The Galaxy \u003cb\u003e...\u003c/b\u003e - Reddit","titleNoFormatting":"Monty Python\u0026#39;s review of “Hitchhiker\u0026#39;s Guide To The Galaxy ... - Reddit","content":"May 28, 2013 \u003cb\u003e...\u003c/b\u003e \u003cb\u003eMonty Python\u0026#39;s review\u003c/b\u003e of “Hitchhiker\u0026#39;s Guide To The Galaxy” (Book) ..... Douglas \nAdams and Monty Python had history of collaboration."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://9gag.com/gag/aBK5Vg2/monty-python-s-review-of-hitchhiker-s-guide-to-the-galaxy-book","url":"http://9gag.com/gag/aBK5Vg2/monty-python-s-review-of-hitchhiker-s-guide-to-the-galaxy-book","visibleUrl":"9gag.com","cacheUrl":"http://www.google.com/search?q\u003dcache:Y2TFvWvM65UJ:9gag.com","title":"\u003cb\u003eMonty Python\u0026#39;s review\u003c/b\u003e of “Hitchhiker\u0026#39;s Guide To The Galaxy \u003cb\u003e...\u003c/b\u003e - 9Gag","titleNoFormatting":"Monty Python\u0026#39;s review of “Hitchhiker\u0026#39;s Guide To The Galaxy ... - 9Gag","content":"\u003cb\u003eMonty Python\u0026#39;s review\u003c/b\u003e of “Hitchhiker\u0026#39;s Guide To The Galaxy” (Book). 5 12,420 \npoints · 68 comments. UP; DOWN. Facebook; Twitter. More. Google+; Pinterest ..."}],"cursor":{"resultCount":"439","pages":[{"start":"0","label":1},{"start":"4","label":2},{"start":"8","label":3},{"start":"12","label":4},{"start":"16","label":5},{"start":"20","label":6},{"start":"24","label":7},{"start":"28","label":8}],"estimatedResultCount":"439","currentPageIndex":0,"moreResultsUrl":"http://www.google.com/search?oe\u003dutf8\u0026ie\u003dutf8\u0026source\u003duds\u0026start\u003d0\u0026hl\u003den\u0026q\u003dMonty+Pythonreview","searchResultTime":"0.08"}}, "responseDetails": null, "responseStatus": 200}
+{"responseData": {
+    "results": [
+        {
+            "GsearchResultClass": "GwebSearch",
+            "unescapedUrl": "http://www.rottentomatoes.com/m/monty_python_and_the_holy_grail/",
+            "url": "http://www.rottentomatoes.com/m/monty_python_and_the_holy_grail/",
+            "visibleUrl": "www.rottentomatoes.com",
+            "cacheUrl": "http://www.google.com/search?q\u003dcache:RM3aDAkY-BwJ:www.rottentomatoes.com",
+            "title": "\u003cb\u003eMonty\u003c/b\u003e Python and the Holy Grail - Rotten Tomatoes",
+            "titleNoFormatting": "Monty Python and the Holy Grail - Rotten Tomatoes",
+            "content": "Critics Consensus: A cult classic as gut-bustingly hilarious as it is blithely \nridiculous, \u003cb\u003eMonty\u003c/b\u003e Python and the Holy Grail has lost none of..."
+        },
+        {
+            "GsearchResultClass": "GwebSearch",
+            "unescapedUrl": "https://www.commonsensemedia.org/movie-reviews/monty-python-and-the-holy-grail",
+            "url": "https://www.commonsensemedia.org/movie-reviews/monty-python-and-the-holy-grail",
+            "visibleUrl": "www.commonsensemedia.org",
+            "cacheUrl": "http://www.google.com/search?q\u003dcache:-QD-ujBSnUQJ:www.commonsensemedia.org",
+            "title": "\u003cb\u003eMonty\u003c/b\u003e Python and the Holy Grail Movie Review",
+            "titleNoFormatting": "Monty Python and the Holy Grail Movie Review",
+            "content": "Jun 3, 2007 \u003cb\u003e...\u003c/b\u003e Is \u003cb\u003eMonty\u003c/b\u003e Python and the Holy Grail OK for your child? Read Common Sense \nMedia\u0026#39;s movie review to help you make informed decisions."
+        },
+        {
+            "GsearchResultClass": "GwebSearch",
+            "unescapedUrl": "http://www.reddit.com/r/funny/comments/1f8f6z/monty_pythons_review_of_hitchhikers_guide_to_the/",
+            "url": "http://www.reddit.com/r/funny/comments/1f8f6z/monty_pythons_review_of_hitchhikers_guide_to_the/",
+            "visibleUrl": "www.reddit.com",
+            "cacheUrl": "http://www.google.com/search?q\u003dcache:oPT-zHngb6cJ:www.reddit.com",
+            "title": "\u003cb\u003eMonty Python\u0026#39;s review\u003c/b\u003e of “Hitchhiker\u0026#39;s Guide To The Galaxy \u003cb\u003e...\u003c/b\u003e - Reddit",
+            "titleNoFormatting": "Monty Python\u0026#39;s review of “Hitchhiker\u0026#39;s Guide To The Galaxy ... - Reddit",
+            "content": "May 28, 2013 \u003cb\u003e...\u003c/b\u003e \u003cb\u003eMonty Python\u0026#39;s review\u003c/b\u003e of “Hitchhiker\u0026#39;s Guide To The Galaxy” (Book) ..... Douglas \nAdams and Monty Python had history of collaboration."
+        },
+        {
+            "GsearchResultClass": "GwebSearch",
+            "unescapedUrl": "http://9gag.com/gag/aBK5Vg2/monty-python-s-review-of-hitchhiker-s-guide-to-the-galaxy-book",
+            "url": "http://9gag.com/gag/aBK5Vg2/monty-python-s-review-of-hitchhiker-s-guide-to-the-galaxy-book",
+            "visibleUrl": "9gag.com",
+            "cacheUrl": "http://www.google.com/search?q\u003dcache:Y2TFvWvM65UJ:9gag.com",
+            "title": "\u003cb\u003eMonty Python\u0026#39;s review\u003c/b\u003e of “Hitchhiker\u0026#39;s Guide To The Galaxy \u003cb\u003e...\u003c/b\u003e - 9Gag",
+            "titleNoFormatting": "Monty Python\u0026#39;s review of “Hitchhiker\u0026#39;s Guide To The Galaxy ... - 9Gag",
+            "content": "\u003cb\u003eMonty Python\u0026#39;s review\u003c/b\u003e of “Hitchhiker\u0026#39;s Guide To The Galaxy” (Book). 5 12,420 \npoints · 68 comments. UP; DOWN. Facebook; Twitter. More. Google+; Pinterest ..."
+        }
+    ],
+    "cursor": {
+        "resultCount": "439",
+        "pages": [
+            {
+                "start": "0",
+                "label": 1
+            },
+            {
+                "start": "4",
+                "label": 2
+            },
+            {
+                "start": "8",
+                "label": 3
+            },
+            {
+                "start": "12",
+                "label": 4
+            },
+            {
+                "start": "16",
+                "label": 5
+            },
+            {
+                "start": "20",
+                "label": 6
+            },
+            {
+                "start": "24",
+                "label": 7
+            },
+            {
+                "start": "28",
+                "label": 8
+            }
+        ],
+        "estimatedResultCount": "439",
+        "currentPageIndex": 0,
+        "moreResultsUrl": "http://www.google.com/search?oe\u003dutf8\u0026ie\u003dutf8\u0026source\u003duds\u0026start\u003d0\u0026hl\u003den\u0026q\u003dMonty+Pythonreview",
+        "searchResultTime": "0.08"
+    }
+}, "responseDetails": null, "responseStatus": 200}

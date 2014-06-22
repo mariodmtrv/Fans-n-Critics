@@ -12,6 +12,7 @@ class Category(object):
     TRAILER = 6
     COMPANY = 7
 
+
 # Contains info about the query to be made
 class Query(object):
     # Standard constructor (w/ parameters)
@@ -32,6 +33,7 @@ class Query(object):
     # Returns the URL of the created query
     def get_url(self):
         return self.url
+
 
 # This class represents a generic resource found at Metacritic
 class Resource(object):

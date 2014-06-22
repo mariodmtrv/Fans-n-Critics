@@ -3,6 +3,7 @@ class UserRatings():
 
     def __init__(self):
         pass
+
     def vote(self, movie):
         pass
 
