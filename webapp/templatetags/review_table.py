@@ -1,8 +1,5 @@
-from encodings.punycode import selective_find
-
 __author__ = 'mario-dimitrov'
 from django import template
-
 register = template.Library()
 
 from django.template.loader import get_template

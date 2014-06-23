@@ -35,19 +35,29 @@
                 <li><a href="#">Top 250</a></li>
             </ul>
             <div class="navbar-form navbar-left">
-
-
+            {% block movie_search %}
+            {% endblock %}
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a id="userName" style="font-size:1.2em;">John Cleese</a></li>
+                <li><a id="userName" style="font-size:1.2em;">{{ username }}</a></li>
+                 {% block useraccount %}
+            <li><a id="register" style="font-size:1.4em;">Register</a></li>
                 <li class="dropdown">
                     <!-- User account details-->
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account </a>
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style = "font-size: 1.2em">Login </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Settings</a></li>
-                        <li><a href="#">Preferences</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Log out</a></li>
+
+                   <form action="/login/" method="post" accept-charset="UTF-8">
+                      {% csrf_token %}
+                      <input id="user_username" style="margin-bottom: 15px;" type="text" name="username" placeholder="Username" size="30" />
+                      <input id="user_password" style="margin-bottom: 15px;" type="password" name="password" placeholder="Password" size="30" />
+                      <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
+                      <label class="string optional" for="user_remember_me"> Remember me</label>
+
+                      <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In" />
+                    </form>
+{% endblock %}
                     </ul>
                 </li>
             </ul>
@@ -56,8 +66,10 @@
     <!--End Navigation bar-->
 </header>
 <article id="mainDisplayContent">
+    {% block content %}
+    {% endblock %}
     {% load movie_article %}
-    {% generate_movie_data movie_id %}
+    {% generate_movie_article movie_id %}
 </article>
 <aside>
     {% load aside %}
