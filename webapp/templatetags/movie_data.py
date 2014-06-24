@@ -11,7 +11,6 @@ from webapp.templatetags.color_code_calc import generate_color_code
 
 def generate_movie_data(movie_id):
     """TODO"""
-
     class MovieData():
         poster = "../static/images/monty.jpg"
         title = "Monty Python and the Holy Grail"

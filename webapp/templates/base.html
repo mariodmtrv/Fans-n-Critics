@@ -1,20 +1,21 @@
 <html>
 <head>
     <title>Fans+ Critics Your movie concierge</title>
-    <link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="../static/css/stars.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="../static/css/tile-style.css"/>
+    <link href="{{ STATIC_URL }}/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="{{ STATIC_URL }}/css/stars.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}/css/tile-style.css"/>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../static/js/jquery.webRating.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}/js/jquery.webRating.js"></script>
     <script src="../static/js/tiles.js"></script>
     <script src="../static/js/modernizr-1.5.min.js"></script>
     <script src="../static/js/stars.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="../static/css/search-style.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/css/search-style.css"/>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="../static/js/search.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}/js/search.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}/js/search.js"></script>
 </head>
 <body>
 <header>
@@ -26,7 +27,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><img src="../static/images/product/Fans+Critics-Logo.png"
+            <a class="navbar-brand" href="#"><img src="{{ STATIC_URL }}/images/product/Fans+Critics-Logo.png"
                                                   style="height:50px"></a>
         </div>
         <div class="navbar-collapse collapse navbar-inverse-collapse">
@@ -35,12 +36,45 @@
                 <li><a href="#">Top 250</a></li>
             </ul>
             <div class="navbar-form navbar-left">
-            {% block movie_search %}
-            {% endblock %}
+             <div id="activeSearch">
+        <form method="get" action="/search/" id="searchform">
+            <div>
+                <input type="text" size="30" value="" placeholder="Search" name='q' id="inputString"
+                       onkeyup="submit"/>
+            </div>
+            <div id="suggestions" class="list-group">
+                {% for result in alternatives %}
+
+                    <script>
+                     $('#suggestions').fadeIn();
+                     setTimeout(function(){ $('#suggestions').fadeOut()}, 4500);
+                    </script>
+
+                      <a href="/movies/{{ result.movie_id }}/" class="list-group-item" >
+                        <h4 class="list-group-item-heading" style = "font-size: 1em">{{ result.title }}</h4>
+                          <span style = "font-size: 0.9em">{{ result.year }}</span>
+                        <p class="list-group-item-text" style = "font-size: 0.9em">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                      </a>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a id="userName" style="font-size:1.2em;">{{ username }}</a></li>
-                 {% block useraccount %}
+                     {% if user.is_authenticated %}
+                      <li><a id="userName" style="font-size:1.2em;">{{ user.get_full_name}}</a></li>
+                       <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account </a>
+                    <ul class="dropdown-menu">
+<li><a href="#">Settings</a></li>
+<li><a href="#">Preferences</a></li>
+<li class="divider"></li>
+                         <form action="/logout/" method="post" accept-charset="UTF-8">
+                            <div class="btn btn-danger" type= "button"onclick="submit" style = "display: block">Log out</div>
+                             </form>
+                        </ul>
+                       {% else %}
+    </li>
             <li><a id="register" style="font-size:1.4em;">Register</a></li>
                 <li class="dropdown">
                     <!-- User account details-->
@@ -57,7 +91,7 @@
 
                       <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In" />
                     </form>
-{% endblock %}
+{% endif %}
                     </ul>
                 </li>
             </ul>
@@ -68,17 +102,17 @@
 <article id="mainDisplayContent">
     {% block content %}
     {% endblock %}
-    {% load movie_article %}
-    {% generate_movie_article movie_id %}
+
 </article>
-<aside>
-    {% load aside %}
-    {% get_aside_content "../static/images/vertical-banner.png" %}
+<aside id="additionalMenu" style="float:right;min-width:20%;max-width:25%;margin-right:5%; background-color:#df691a;">
+    <img src="{{ STATIC_URL }}/images/vertical-banner.png">
 </aside>
 <!-- Movie view-->
 <section>
+    {% if user.is_authenticated %}
     {% load recommendations %}
-    {% recommend user %}
+    {% recommend user.get_full_name %}
+    {% endif %}
 </section>
 }
 <!--	

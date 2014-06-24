@@ -9,9 +9,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from movie_data_extraction.movie_finder.description_provider import DescriptionProvider
 from movie_data_extraction.movie_finder.movie_search import MovieSearch
+import re
 # Create your views here.
 def index(request):
-    return render_to_response('index.html',context_instance=RequestContext(request))
+    return render_to_response('base.html',context_instance=RequestContext(request))
 
 
 '''
@@ -20,8 +21,8 @@ and repacks the result for the template
 '''
 
 
-def search(movie_name):
-    query = movie_name.GET['q']
+def search(request):
+    query = request.GET['q']
     searcher = MovieSearch()
     alternatives = searcher.get_alternatives_list(query, 5)
     alternatives_result = []
@@ -30,14 +31,19 @@ def search(movie_name):
         def __init__(self, alt):
             self.title = alt.get('title')
             self.year = alt.get('year')
+            self.movie_id = alt.get('imdb_id')
 
     for movie in alternatives:
         res = Alternatives(movie)
         alternatives_result.append(res)
+    return render_to_response('base.html',{'alternatives': alternatives_result}, context_instance=RequestContext(request))
 
-    t = loader.get_template('index.html')
-    c = Context({'alternatives': alternatives_result})
-    return HttpResponse(t.render(c))
+def movie_info(request, movie_id):
+    ''''hotel = get_object_or_404(Hotel, id=hotel_id)
+    photo_album = Photo.objects.filter(hotel=hotel_id)'''
+    regex = re.compile('\w+/$')
+    movie_res_id=(regex.findall(request.path)[0][:-1])
+    return render_to_response("movie-article.html", {"movie_id":movie_res_id}, context_instance=RequestContext(request) )
 
 @csrf_protect
 def login_view(request):
@@ -47,9 +53,12 @@ def login_view(request):
         user = authenticate(username=request.POST.get('username', ''), password=request.POST.get('password', ''))
         if user is not None:
             login(request, user)
-            return render_to_response('logged.html', {'username': username}, context_instance=RequestContext(request))
-            return HttpResponseRedirect('/logged.html/')
+            return render_to_response('base.html',context_instance=RequestContext(request))
         else:
             print(username)
-            return HttpResponse('<h1>Failed</h1>',status = 401)
-    return render_to_response('index.html', context_instance=RequestContext(request))
+            return HttpResponse('<h1>User authentication failed</h1>',status = 401)
+    '''return render_to_response('base.html', context_instance=RequestContext(request))'''
+
+def logout_view(request):
+    logout(request)
+    return render_to_response('base.html', context_instance=RequestContext(request))

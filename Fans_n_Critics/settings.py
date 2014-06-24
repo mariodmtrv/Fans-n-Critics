@@ -87,6 +87,10 @@ STATIC_URL = '/static/'
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), '../webapp/templates').replace('\\', '/')
 )
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 STATICFILES_DIRS = (
-    os.path.join(os.path.dirname(__file__), '../webapp/static').replace('\\', '/'),
+    os.path.join(os.path.dirname(__file__), 'static'),
 )

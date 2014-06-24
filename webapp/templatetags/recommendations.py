@@ -11,7 +11,7 @@ def recommend(user):
 
     class Result():
         image = '../static/images/men.jpg'
-        title = 'Two and a half men'
+        title = user
         description = 'Sucks a lot ...'
         rating = '7.5'
 

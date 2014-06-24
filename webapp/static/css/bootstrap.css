@@ -5669,7 +5669,6 @@ a.thumbnail.active {
     margin-bottom: 20px;
     padding-left: 0;
 }
-
 .list-group-item {
     position: relative;
     display: block;
@@ -5682,6 +5681,7 @@ a.thumbnail.active {
 .list-group-item:first-child {
     border-top-right-radius: 0;
     border-top-left-radius: 0;
+    background-color: #fff;
 }
 
 .list-group-item:last-child {
