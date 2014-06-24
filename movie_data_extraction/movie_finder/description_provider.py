@@ -1,3 +1,5 @@
+import datetime
+import re
 from  movie_data_extraction.APIs.imdb.imdbpie import Imdb
 
 
@@ -12,6 +14,14 @@ class DescriptionProvider():
         self.__description = movie.plot_outline
         self.__genres = movie.genres
         self.__poster = movie.poster_url
+        released = self.__get_released_date(movie)
+        self.__released = datetime.date(int(released[0]),int(released[1]),int(released[2]))
+
+    @staticmethod
+    def __get_released_date(movie):
+        released_string = movie.release_date
+        match=re.findall(r'(\d+)',released_string)
+        return match
 
     def get_name(self):
         return self.__title
@@ -24,3 +34,6 @@ class DescriptionProvider():
 
     def get_poster_url(self):
         return self.__poster
+
+    def get_released(self):
+        return self.__released
