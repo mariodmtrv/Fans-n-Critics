@@ -12,3 +12,5 @@ class ColorCodingTest(TestCase):
         actual = generate_color_code(6.499999999)
         expected = "warning"
         self.assertEqual(actual, expected)
+
+

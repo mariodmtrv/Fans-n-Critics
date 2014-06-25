@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-<div id="movieContent" style="float:left;width:72%;">
-    <div class="jumbotron" style="margin-left:5%;height:100%">
-        <div id="movieInformation" style="">
-        {% load movie_data %}
-        {%   generate_movie_data movie_id %}
-        {%  load review_table %}
-        {% generate_review_table movie_id %}
+    <div id="movieContent" style="float:left;width:72%;">
+        <div class="jumbotron" style="margin-left:5%;height:100%">
+            <div id="movieInformation" style="">
+                {{   movie_id }}
+                {% load movie_data %}
+                {% generate_movie_data movie_id %}
+
+                {% load review_table %}
+                {% generate_review_table movie_id %}
+            </div>
+
         </div>
 
     </div>
-
-</div>
 {% endblock %}

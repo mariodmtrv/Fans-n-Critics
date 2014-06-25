@@ -1,6 +1,8 @@
+
+
 __author__ = 'mario-dimitrov'
 from django import template
-
+from webapp.movie_initialization import create_movie_data
 register = template.Library()
 
 from django.template.loader import get_template

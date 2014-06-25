@@ -15,12 +15,12 @@ class DescriptionProvider():
         self.__genres = movie.genres
         self.__poster = movie.poster_url
         released = self.__get_released_date(movie)
-        self.__released = datetime.date(int(released[0]),int(released[1]),int(released[2]))
+        self.__released = datetime.date(int(released[0]), int(released[1]), int(released[2]))
 
     @staticmethod
     def __get_released_date(movie):
         released_string = movie.release_date
-        match=re.findall(r'(\d+)',released_string)
+        match = re.findall(r'(\d+)', released_string)
         return match
 
     def get_name(self):

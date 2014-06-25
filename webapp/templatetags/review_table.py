@@ -15,8 +15,8 @@ def generate_review_table(movie_id):
         rating = 7.5
         color_code = generate_color_code(rating)
 
-    p = MovieReview()
 
+    p = MovieReview()
     ratings = [p, p, p, p, p, p]
     return {'ratings': ratings}
 

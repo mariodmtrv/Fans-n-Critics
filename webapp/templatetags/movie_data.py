@@ -7,22 +7,39 @@ register = template.Library()
 
 from django.template.loader import get_template
 from webapp.templatetags.color_code_calc import generate_color_code
-
-
+from webapp.movie_initialization import create_movie_data
+from webapp.models import Movie
 def generate_movie_data(movie_id):
-    """TODO"""
+    print("Movie Id" + movie_id)
+    try:
+        db_movie = Movie.objects.get(movie_id=movie_id)
+        print('Movie exists')
+    except:
+        db_movie = create_movie_data(movie_id)
+        print('Movie was created')
+    class MovieData(Movie):
+        def __init__(self, db_movie):
+            db_movie = Movie.objects.get(movie_id=movie_id)
+            if len(db_movie.description)==0:
+                self.description = "No description available"
+            else:
+                self.description = db_movie.description
 
-    class MovieData():
-        poster = "../static/images/monty.jpg"
-        title = "Monty Python and the Holy Grail"
-        released = '15-May-1979'
-        summary = "A theatrical re-release of the 1975 Python classic" + \
-                  "with a new print, additional footage, and remastered soundtrack."
-        starring = 'Eric Idle, Graham Chapman, John Cleese, Michael Palin, Terry Gilliam, Terry Jones'
-        overall_rating = 8.5
-        color_code = generate_color_code(overall_rating)
+            if len(db_movie.genres)==0:
+                self.genres = "No genres available"
+            else:
+                self.genres = db_movie.genres
 
-    movie = MovieData()
+            if len(db_movie.poster)==0:
+                self.poster = "No poster available"
+            else:
+                self.poster = db_movie.poster
+            self.released = db_movie.released
+            self.title = db_movie.title
+            self.overall_rating = 3.7
+            self.color_code = generate_color_code(self.overall_rating)
+
+    movie = MovieData(db_movie)
     return {'movie': movie}
 
 

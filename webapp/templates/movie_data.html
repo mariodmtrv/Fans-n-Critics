@@ -1,7 +1,7 @@
 <h2 id="movieName" style="margin-right:15%;clear:both">{{ movie.title }}</h2>
 
 <div id="moviePoster" style="float:left;min-width:25%;">
-    <img src="{{ movie.poster }}" style="width:100%">
+    <img src="{{ movie.poster }}" style="max-width:150px">
 </div>
 <div id="dataContent" style="margin-left:2%;width:69%;float:right">
     <p id="releaseDate" style="font-size:1.1em;"><b>Release date:</b> <span
@@ -11,17 +11,16 @@
         <div id="shortInfoTabs" style="float:left;width:80%;">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#summary" data-toggle="tab">Summary</a></li>
-                <li class=""><a href="#starring" data-toggle="tab">Starring</a></li>
-                <li class=""><a href="#videos" data-toggle="tab">Videos</a></li>
+                <li class=""><a href="#genres" data-toggle="tab">Genres</a></li>
             </ul>
             <div id="myTabContent" class="tab-content" style="padding-left:0.8em">
                 <div class="tab-pane fade active in" id="summary">
-                    <p style="font-size:1.05em">
-                        {{ movie.summary }}
+                    <p style="font-size:1.05em;text-overflow: ellipsis;">
+                        {{ movie.description }}
                     </p>
                 </div>
-                <div class="tab-pane fade" id="starring">
-                    <p style="font-size:1.05em"> {{ movie.starring }}</p>
+                <div class="tab-pane fade" id="genres">
+                    <p style="font-size:1.05em"> {{ movie.genres }}</p>
                 </div>
             </div>
             {% load rating_engines %}
