@@ -1,3 +1,4 @@
+{% block review_table %}
 <table id="ratingsTable" class="table table-striped table-hover "
        style="background-color:inherit;width:90%;margin-right:15%;font-size:0.9em">
     <thead>
@@ -9,7 +10,7 @@
     </tr>
     </thead>
     <tbody>
-    {% for movie_rating in ratings %}
+    {% for movie_rating in ratings_table %}
         <tr class=" {{ movie_rating.color_code }} ">
             <td>1</td>
             <td><a href="{{ movie_rating.link_address }}"> {{ movie_rating.link_address }}</a></td>
@@ -19,3 +20,4 @@
     {% endfor %}
     </tbody>
 </table>
+{% endblock %}

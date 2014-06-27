@@ -154,8 +154,7 @@
 <!-- Movie view-->
 <section>
     {% if user.is_authenticated %}
-        {% load recommendations %}
-        {% recommend user.get_full_name %}
+       {% include 'recommendations.html' %}
     {% endif %}
 </section>
 }

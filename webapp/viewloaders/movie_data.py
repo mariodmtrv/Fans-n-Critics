@@ -6,9 +6,10 @@ from django import template
 register = template.Library()
 
 from django.template.loader import get_template
-from webapp.templatetags.color_code_calc import generate_color_code
+from webapp.viewloaders.color_code_calc import generate_color_code
 from webapp.movie_initialization import create_movie_data
 from webapp.models import Movie
+
 def generate_movie_data(movie_id):
     print("Movie Id" + movie_id)
     try:
@@ -43,8 +44,4 @@ def generate_movie_data(movie_id):
             self.color_code = generate_color_code(self.overall_rating)
 
     movie = MovieData(db_movie)
-    return {'movie': movie}
-
-
-t = get_template('movie_data.html')
-register.inclusion_tag(t)(generate_movie_data)
+    return movie

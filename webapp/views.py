@@ -1,3 +1,4 @@
+from calendar import weekday
 from http.cookiejar import user_domain_match
 from django.shortcuts import render, loader
 from django.shortcuts import render_to_response
@@ -9,12 +10,19 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from movie_data_extraction.movie_finder.description_provider import DescriptionProvider
 from movie_data_extraction.movie_finder.movie_search import MovieSearch
-from webapp.rate_movie import rate_movie
+from webapp.rate_movie import rate_the_movie
+from webapp.viewloaders.movie_data import generate_movie_data
+from webapp.viewloaders.rating_engines import generate_rating_data
+from webapp.viewloaders.review_table import generate_review_table
 import re
+from webapp.viewloaders.recommendations import recommend
 # Create your views here.
 def index(request):
-    return render_to_response('base.html', context_instance=RequestContext(request))
-
+    if request.user.is_authenticated():
+        recommendations = recommend(request.user.username)
+        return render_to_response('base.html',{"rec_column_one":recommendations.get("rec_column_one"),"rec_column_two":recommendations.get("rec_column_two"), "rec_column_three":recommendations.get("rec_column_three")}, context_instance=RequestContext(request))
+    else:
+        return render_to_response('base.html', context_instance=RequestContext(request))
 
 '''
 Performs the movie query search
@@ -41,11 +49,13 @@ def search(request):
                               context_instance=RequestContext(request))
 
 def rate_movie(request):
+    print("Form accepted")
     if request.user.is_authenticated():
         username = request.user.username
     rating = request.GET['rating']
     movie_id = request.GET['movie_id']
-    rate_movie(movie_id,username,rating)
+    print("User voted" + rating + "    " +  movie_id + "    " + username)
+    rate_the_movie(movie_id,username,rating)
 
 
 def movie_info(request, movie_id):
@@ -53,8 +63,11 @@ def movie_info(request, movie_id):
     photo_album = Photo.objects.filter(hotel=hotel_id)'''
     regex = re.compile('\w+/$')
     movie_res_id = (regex.findall(request.path)[0][:-1])
+    movie_data = generate_movie_data(movie_res_id)
+    ratings = generate_rating_data(movie_res_id)
+    ratings_table =generate_review_table(movie_res_id)
     print(movie_res_id)
-    return render_to_response("movie-article.html", {"movie_id": movie_res_id},
+    return render_to_response("movie-article.html", {"movie_id": movie_res_id, "movie" : movie_data, "ratings": ratings, "ratings_table":ratings_table },
                               context_instance=RequestContext(request))
 
 
@@ -69,7 +82,7 @@ def login_view(request):
             return render_to_response('base.html', context_instance=RequestContext(request))
         else:
             print(username)
-            return HttpResponse('<h1>User authentication failed</h1>', status=401)
+            return HttpResponse('<h1>You enter the wrong neighbourhood stalker flower</h1>', status=401)
     '''return render_to_response('base.html', context_instance=RequestContext(request))'''
 
 

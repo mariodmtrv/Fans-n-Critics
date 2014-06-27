@@ -1,5 +1,5 @@
+{% block movie_data %}
 <h2 id="movieName" style="margin-right:15%;clear:both">{{ movie.title }}</h2>
-
 <div id="moviePoster" style="float:left;min-width:25%;">
     <img src="{{ movie.poster }}" style="max-width:150px">
 </div>
@@ -23,8 +23,7 @@
                     <p style="font-size:1.05em"> {{ movie.genres }}</p>
                 </div>
             </div>
-            {% load rating_engines %}
-            {% generate_rating_data movie_id %}
+            {% include "rating_engines.html" %}
         </div>
     </div>
     <div id="overallAndPersonal">
@@ -36,18 +35,18 @@
         <div class="btn-group-vertical"
              style="float:right;text-align:center;background-color:#3d4954;width:7.95em; color:#df691a">
             <b style="font-size:1.5em">MY &nbsp; VOTE</b>
-            <form action="/rate/" method="get">
-
+            <form action="/rate_movie/" method="get" id = "voteform">
 					<span class="star-rating">
-                      <input type="radio" name="rating" value="1"><i></i>
-                      <input type="radio" name="rating" value="2"><i></i>
-                      <input type="radio" name="rating" value="3"><i></i>
-                      <input type="radio" name="rating" value="4"><i></i>
-                      <input type="radio" name="rating" value="5"><i></i>
+                      <input type="radio" name="rating" value="1" onchange="submit"><i></i>
+                      <input type="radio" name="rating" value="2" onchange="submit"><i></i>
+                      <input type="radio" name="rating" value="3" onchange="submit"><i></i>
+                      <input type="radio" name="rating" value="4" onchange="submit"><i></i>
+                      <input type="radio" name="rating" value="5" onchange="submit"><i></i>
                     </span>
-                 <input name="movie_id" hidden="true" value={{ movie_id }}>
+                 <input name="movie_id" hidden="true" value="{{ movie_id }}">
             </form>
             <!--<h4 class="btn btn-default" style = "background-color:#2b3e50" >Watchlist</h4>-->
         </div>
     </div>
 </div>
+{% endblock %}

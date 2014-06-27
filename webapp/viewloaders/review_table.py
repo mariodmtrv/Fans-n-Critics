@@ -3,7 +3,7 @@ from django import template
 register = template.Library()
 
 from django.template.loader import get_template
-from webapp.templatetags.color_code_calc import generate_color_code
+from webapp.viewloaders.color_code_calc import generate_color_code
 
 
 def generate_review_table(movie_id):
@@ -17,9 +17,5 @@ def generate_review_table(movie_id):
 
 
     p = MovieReview()
-    ratings = [p, p, p, p, p, p]
-    return {'ratings': ratings}
-
-
-t = get_template('review_table.html')
-register.inclusion_tag(t)(generate_review_table)
+    ratings_table = [p, p, p, p, p, p]
+    return ratings_table
