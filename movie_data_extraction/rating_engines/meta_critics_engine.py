@@ -1,5 +1,4 @@
-from RatingEngine import RatingEngine
-import metacritics
+from movie_data_extraction.rating_engines.rating_engine import RatingEngine
 
 '''
 class MetaCriticsEngine(RatingEngine):

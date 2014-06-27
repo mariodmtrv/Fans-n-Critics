@@ -4,7 +4,7 @@ class RatingEngine:
        like IMDB or RottenTomatoes"""
 
     def __init__(self):
-        print("Hello")
+        pass
 
     @property
     def rating(self):

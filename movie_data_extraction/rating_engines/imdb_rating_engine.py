@@ -1,23 +1,22 @@
-from APIs.imdb.imdbpie.imdbpie import Imdb
-from rating_engines import rating_engine
+from movie_data_extraction.APIs.imdb.imdbpie import Imdb
+from movie_data_extraction.rating_engines.rating_engine import RatingEngine
 
 
-class IMDBRatingEngine(rating_engine):
+class IMDBRatingEngine(RatingEngine):
     """Represents the IMDB rating engine and its results for a movie"""
 
     def __init__(self, movie_id):
-        rating_engine.__init__(self)
+        #RatingEngine.__init__(self)
         self.__movie_id = movie_id
         imdb = Imdb()
         try:
-            movie = imdb.find_movie_by_id(self.__movie_id)
+            movie_data = imdb.find_movie_by_id(self.__movie_id)
         except Exception:
             print("Movie was not found")
-        self.__rating = movie.rating
-        self.__votes = movie.votes
+        self.__rating = movie_data.rating
+        self.__votes = movie_data.votes
         self.__name = "IMDB"
-        self.__logo = "resources/logos/imdb"
-        print(self.__rating)
+        self.__logo = "http://www.cinephreakpictures.com/images/imdb_logo_small.png"
 
     def rating(self):
         return self.__rating
