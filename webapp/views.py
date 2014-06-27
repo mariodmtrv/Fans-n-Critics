@@ -9,6 +9,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from movie_data_extraction.movie_finder.description_provider import DescriptionProvider
 from movie_data_extraction.movie_finder.movie_search import MovieSearch
+from webapp.rate_movie import rate_movie
 import re
 # Create your views here.
 def index(request):
@@ -38,6 +39,13 @@ def search(request):
         alternatives_result.append(res)
     return render_to_response('base.html', {'alternatives': alternatives_result},
                               context_instance=RequestContext(request))
+
+def rate_movie(request):
+    if request.user.is_authenticated():
+        username = request.user.username
+    rating = request.GET['rating']
+    movie_id = request.GET['movie_id']
+    rate_movie(movie_id,username,rating)
 
 
 def movie_info(request, movie_id):

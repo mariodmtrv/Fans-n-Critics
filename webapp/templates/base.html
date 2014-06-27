@@ -110,10 +110,45 @@
 </header>
 <article id="mainDisplayContent">
     {% block content %}
+         <div id="movieContent" style="float:left;width:72%;height: 600px">
+<div class="bs-example">
+    <div id="displayCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+    	<!-- Carousel indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+            <div class="active item">
+               <img src="{{ STATIC_URL }}images/grand-budapest-hotel.png"/>
+            </div>
+            <div class="item">
+                <div class="active item">
+                <img src="{{ STATIC_URL }}images/les.jpg"/>
+                </div>
+            </div>
+            <div class="item">
+                <div class="active item">
+               <img src="{{ STATIC_URL }}images/postera.jpg"/>
+            </div>
+            </div>
+        </div>
+        <!-- Carousel nav -->
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+</div>
+        </div>
     {% endblock %}
 
 </article>
-<aside id="additionalMenu" style="float:right;min-width:20%;max-width:25%;margin-right:5%; background-color:#df691a;">
+<aside id="additionalMenu" style="float:right;min-width:20%;max-width:25%;margin-right:5%;">
     <img src="{{ STATIC_URL }}/images/vertical-banner.png">
 </aside>
 <!-- Movie view-->
