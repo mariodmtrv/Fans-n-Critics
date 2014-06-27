@@ -1,6 +1,9 @@
 from django.test import TestCase
+
 from webapp.viewloaders.color_code_calc import generate_color_code
-from webapp.viewloaders.recommendations_generator import RecommendationsGenerator
+from webapp.recommendations_generator import RecommendationsGenerator
+
+
 class ColorCodingTest(TestCase):
     def test_color_code_large_number(self):
         actual = generate_color_code(100.32)

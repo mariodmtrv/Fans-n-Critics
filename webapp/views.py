@@ -1,21 +1,18 @@
-from calendar import weekday
-from http.cookiejar import user_domain_match
-from django.shortcuts import render, loader
-from django.shortcuts import render_to_response
-from django.template import RequestContext, Context
+import re
 
-from django.http import HttpResponse
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponse, HttpResponseRedirect
-from movie_data_extraction.movie_finder.description_provider import DescriptionProvider
+from django.http import HttpResponse
+
 from movie_data_extraction.movie_finder.movie_search import MovieSearch
-from webapp.rate_movie import rate_the_movie
+from webapp.viewloaders.rate_movie import rate_the_movie
 from webapp.viewloaders.movie_data import generate_movie_data
 from webapp.viewloaders.rating_engines import generate_rating_data
 from webapp.viewloaders.review_table import generate_review_table
-import re
 from webapp.viewloaders.recommendations import recommend
+
 # Create your views here.
 def index(request):
     if request.user.is_authenticated():
