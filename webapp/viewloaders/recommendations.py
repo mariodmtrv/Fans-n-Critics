@@ -4,11 +4,13 @@ from django import template
 register = template.Library()
 
 from django.template.loader import get_template
+from webapp.models import Movie
+from webapp.recommendations_generator import RecommendationsGenerator
 
 
 def recommend(user):
+    generator = RecommendationsGenerator(user)
     """TODO"""
-    print ("Movie id here")
     class Result():
         image = '../static/images/men.jpg'
         title = "Two and a half"

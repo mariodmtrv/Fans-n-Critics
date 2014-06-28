@@ -52,7 +52,7 @@ def rate_movie(request):
     rating = request.GET['rating']
     movie_id = request.GET['movie_id']
     print("User voted" + rating + "    " +  movie_id + "    " + username)
-    rate_the_movie(movie_id,username,rating)
+    rate_the_movie(movie_id, username, rating, context_instance=RequestContext(request))
 
 
 def movie_info(request, movie_id):
