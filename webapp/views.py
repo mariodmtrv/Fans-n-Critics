@@ -5,19 +5,19 @@ from django.template import RequestContext
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.http import HttpResponse
 
 from webapp.viewloaders.rate_movie import rate_the_movie
 from webapp.viewloaders.movie_data import generate_movie_data
 from webapp.viewloaders.rating_engines import generate_rating_data
 from webapp.viewloaders.review_table import generate_review_table
-from webapp.viewloaders.recommendations import recommend
 from webapp.viewloaders.generate_alternatives import generate_alternatives
+from webapp.viewloaders.generate_recommendations_list import generate_list
 
 def index(request):
     if request.user.is_authenticated():
-        recommendations = recommend(request.user.username)
-        return render_to_response('base.html', {"rec_column_one": recommendations.get("rec_column_one"), "rec_column_two": recommendations.get("rec_column_two"), "rec_column_three": recommendations.get("rec_column_three")}, context_instance=RequestContext(request))
+        recommendations = generate_list(request.user.username)
+        return render_to_response('base.html',
+                                   recommendations, context_instance=RequestContext(request))
     else:
         return render_to_response('base.html', context_instance=RequestContext(request))
 
@@ -39,7 +39,7 @@ def register(request):
     password_confirmation = request.POST.get('password_confirmation')
     if password == password_confirmation:
         count = User.objects.filter(username = username).count()
-        if count>0:
+        if count > 0:
             return render_to_response('base.html',
                                       {"should_show_message": "true",
                                        "message_header":"Failed", "message_content":"This username exists"},
@@ -71,12 +71,12 @@ def rate_movie(request):
         movie_id, username, rating, context_instance=RequestContext(request))
 
 
-def movie_info(request, movie_id):
-    ''''hotel = get_object_or_404(Hotel, id=hotel_id)
-    photo_album = Photo.objects.filter(hotel=hotel_id)'''
+def movie_info(request,id):
     regex = re.compile('\w+/$')
     movie_res_id = (regex.findall(request.path)[0][:-1])
+    print(movie_res_id)
     movie_data = generate_movie_data(movie_res_id)
+    print(movie_data.description)
     ratings = generate_rating_data(movie_res_id)
     ratings_table = generate_review_table(movie_res_id)
     print(movie_res_id)
@@ -95,8 +95,14 @@ def login_view(request):
             'username', ''), password=request.POST.get('password', ''))
         if user is not None:
             login(request, user)
-            return render_to_response('base.html',  {"should_show_message": "true", "message_header":"Welcome",
-                                       "message_content":"Oh, yeah, welcome "+username },context_instance=RequestContext(request))
+            recommendations = generate_list(user)
+            success_log = {"should_show_message": "true",
+                                                     "message_header":"Welcome",
+                                                     "message_content":"Oh, yeah, welcome "+username,
+                                                     }
+
+            return render_to_response('base.html', dict(list(recommendations.items())+list(success_log.items())),
+                                      context_instance=RequestContext(request))
         else:
             return render_to_response('base.html',
                                       {"should_show_message": "true", "message_header":"Failed",

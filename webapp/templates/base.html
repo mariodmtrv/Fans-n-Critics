@@ -26,13 +26,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><img src="{{ STATIC_URL }}/images/product/Fans+Critics-Logo.png"
+            <a class="navbar-brand"><img src="{{ STATIC_URL }}/images/product/Fans+Critics-Logo.png"
                                                   style="height:50px"></a>
         </div>
         <div class="navbar-collapse collapse navbar-inverse-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">This week</a></li>
-                <li><a href="#">Top 250</a></li>
             </ul>
             <div class="navbar-form navbar-left">
                 <div id="activeSearch">
@@ -54,9 +53,6 @@
                                 <a href="/movies/{{ result.movie_id }}/" class="list-group-item">
                                     <h4 class="list-group-item-heading" style="font-size: 1em">{{ result.title }}</h4>
                                     <span style="font-size: 0.9em">{{ result.year }}</span>
-
-                                    <p class="list-group-item-text" style="font-size: 0.9em">Donec id elit non mi porta
-                                        gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
                                 </a>
                             {% endfor %}
                         </div>
@@ -85,7 +81,6 @@
                     <a href="#myModal" role="button" class="btn" data-toggle="modal">Register</a>
 
                     {% include "register.html" %}
-
 
                     </li>
                     <li class="dropdown">

@@ -8,10 +8,10 @@ __author__ = 'mario-dimitrov'
 
 def create_movie_data(movie_id):
     d_provider = DescriptionProvider(movie_id)
-    p = Movie(movie_id=movie_id, title=d_provider.get_name(),
+    movie = Movie(movie_id=movie_id, title=d_provider.get_name(),
               description=d_provider.get_short_description(),
               genres=d_provider.get_genre_list(),
               poster=d_provider.get_poster_url(),
               released=d_provider.get_released())
-    p.save()
-    '''Load more data here'''
+    movie.save()
+    return movie
