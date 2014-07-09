@@ -13,23 +13,29 @@ from webapp.viewloaders.review_table import generate_review_table
 from webapp.viewloaders.generate_alternatives import generate_alternatives
 from webapp.viewloaders.generate_recommendations_list import generate_list
 
+
 def index(request):
     if request.user.is_authenticated():
         recommendations = generate_list(request.user.username)
         return render_to_response('base.html',
-                                   recommendations, context_instance=RequestContext(request))
+                                  recommendations, context_instance=RequestContext(request))
     else:
         return render_to_response('base.html', context_instance=RequestContext(request))
+
 
 '''
 Performs the movie query search
 and repacks the result for the template
 '''
+
+
 def search(request):
     query = request.GET['q']
     alternatives_result = generate_alternatives(query)
     return render_to_response('base.html', {'alternatives': alternatives_result},
                               context_instance=RequestContext(request))
+
+
 def register(request):
     first_name = request.POST.get('first_name')
     username = request.POST.get('username')
@@ -38,26 +44,25 @@ def register(request):
     password = request.POST.get('password')
     password_confirmation = request.POST.get('password_confirmation')
     if password == password_confirmation:
-        count = User.objects.filter(username = username).count()
+        count = User.objects.filter(username=username).count()
         if count > 0:
             return render_to_response('base.html',
                                       {"should_show_message": "true",
-                                       "message_header":"Failed", "message_content":"This username exists"},
+                                       "message_header": "Failed", "message_content": "This username exists"},
                                       context_instance=RequestContext(request))
         else:
             user = User()
-            user.password=password
+            user.password = password
             user.first_name = first_name
             user.last_name = last_name
             user.email = email
             user.username = username
             user.save()
             return render_to_response('base.html',
-                                      {"should_show_message": "true", "message_header":"Created user "+username,
-                                       "message_content":"Your account has been confirmed. Now you may login."},
+                                      {"should_show_message": "true", "message_header": "Created user " + username,
+                                       "message_content": "Your account has been confirmed. Now you may login."},
                                       context_instance=RequestContext(request))
-    return render_to_response('base.html',context_instance=RequestContext(request))
-
+    return render_to_response('base.html', context_instance=RequestContext(request))
 
 
 def rate_movie(request):
@@ -71,12 +76,10 @@ def rate_movie(request):
         movie_id, username, rating, context_instance=RequestContext(request))
 
 
-def movie_info(request,id):
+def movie_info(request, id):
     regex = re.compile('\w+/$')
     movie_res_id = (regex.findall(request.path)[0][:-1])
-    print(movie_res_id)
     movie_data = generate_movie_data(movie_res_id)
-    print(movie_data.description)
     ratings = generate_rating_data(movie_res_id)
     ratings_table = generate_review_table(movie_res_id)
     print(movie_res_id)
@@ -97,17 +100,17 @@ def login_view(request):
             login(request, user)
             recommendations = generate_list(user)
             success_log = {"should_show_message": "true",
-                                                     "message_header":"Welcome",
-                                                     "message_content":"Oh, yeah, welcome "+username,
-                                                     }
+                           "message_header": "Welcome",
+                           "message_content": "Oh, yeah, welcome " + username,
+            }
 
-            return render_to_response('base.html', dict(list(recommendations.items())+list(success_log.items())),
+            return render_to_response('base.html', dict(list(recommendations.items()) + list(success_log.items())),
                                       context_instance=RequestContext(request))
         else:
             return render_to_response('base.html',
-                                      {"should_show_message": "true", "message_header":"Failed",
-                                       "message_content":"Authentication failed for user "+username +
-                                                         ". Please check your data and try again"},
+                                      {"should_show_message": "true", "message_header": "Failed",
+                                       "message_content": "Authentication failed for user " + username +
+                                                          ". Please check your data and try again"},
                                       context_instance=RequestContext(request))
 
 

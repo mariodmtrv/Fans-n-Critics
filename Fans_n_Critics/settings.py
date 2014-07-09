@@ -83,6 +83,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+IMAGE_URL = '/resources/movie_posters/'
+
 TEMPLATE_DIRS = (
     os.path.join(
         os.path.dirname(__file__), '../webapp/templates').replace('\\', '/')

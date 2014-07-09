@@ -52,5 +52,8 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+
+# Downloaded files
+webapp/static/resources/movie_posters
 Fans-n-Critics.v12.suo
 Fans-n-Critics.v12.suo

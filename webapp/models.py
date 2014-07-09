@@ -7,7 +7,8 @@ class Movie(models.Model):
     title = models.CharField(max_length=120)
     description = models.CharField(max_length=250)
     genres = models.CharField(max_length=300)
-    poster = models.CharField(max_length=80)
+    photo_path = "/images/"
+    poster = models.CharField(max_length=100)
     released = models.DateField()
 
 

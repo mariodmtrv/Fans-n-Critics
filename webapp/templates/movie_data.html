@@ -1,41 +1,42 @@
 {% block movie_data %}
-<h2 id="movieName" style="margin-right:15%;clear:both">{{ movie.title }}</h2>
-<div id="moviePoster" style="float:left;min-width:25%;">
-    <img src="{{ movie.poster }}" style="max-width:150px">
-</div>
-<div id="dataContent" style="margin-left:2%;width:69%;float:right">
-    <p id="releaseDate" style="font-size:1.1em;"><b>Release date:</b> <span
-            style="padding:5px">{{ movie.released }}</span></p>
-
-    <div id="textContent" style="width:80%">
-        <div id="shortInfoTabs" style="float:left;width:80%;">
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#summary" data-toggle="tab">Summary</a></li>
-                <li class=""><a href="#genres" data-toggle="tab">Genres</a></li>
-            </ul>
-            <div id="myTabContent" class="tab-content" style="padding-left:0.8em">
-                <div class="tab-pane fade active in" id="summary">
-                    <p style="font-size:1.05em;text-overflow: ellipsis;">
-                        {{ movie.description }}
-                    </p>
-                </div>
-                <div class="tab-pane fade" id="genres">
-                    <p style="font-size:1.05em"> {{ movie.genres }}</p>
-                </div>
-            </div>
-            {% include "rating_engines.html" %}
-        </div>
+    <h2 id="movieName" style="margin-right:15%;clear:both">{{ movie.title }}</h2>
+    <div id="moviePoster" style="float:left;min-width:25%;">
+        <img src="{{ STATIC_URL }}/resources/movie_posters//{{ movie.poster }}" style="max-width:150px">
     </div>
-    <div id="overallAndPersonal">
-        <div id="calculatedRating" class="btn btn-{{ movie.color_code }}"
-             style="float:right;text-align:center; padding-bottom:1em">
-            <h1>{{ movie.overall_rating }}</h1>
+    <div id="dataContent" style="margin-left:2%;width:69%;float:right">
+        <p id="releaseDate" style="font-size:1.1em;"><b>Release date:</b> <span
+                style="padding:5px">{{ movie.released }}</span></p>
 
+        <div id="textContent" style="width:80%">
+            <div id="shortInfoTabs" style="float:left;width:80%;">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#summary" data-toggle="tab">Summary</a></li>
+                    <li class=""><a href="#genres" data-toggle="tab">Genres</a></li>
+                </ul>
+                <div id="myTabContent" class="tab-content" style="padding-left:0.8em">
+                    <div class="tab-pane fade active in" id="summary">
+                        <p style="font-size:1.05em;text-overflow: ellipsis;">
+                            {{ movie.description }}
+                        </p>
+                    </div>
+                    <div class="tab-pane fade" id="genres">
+                        <p style="font-size:1.05em"> {{ movie.genres }}</p>
+                    </div>
+                </div>
+                {% include "rating_engines.html" %}
+            </div>
         </div>
-        <div class="btn-group-vertical"
-             style="float:right;text-align:center;background-color:#3d4954;width:7.95em; color:#df691a">
-            <b style="font-size:1.5em">MY &nbsp; VOTE</b>
-            <form action="/rate_movie/" method="get" id = "voteform">
+        <div id="overallAndPersonal">
+            <div id="calculatedRating" class="btn btn-{{ movie.color_code }}"
+                 style="float:right;text-align:center; padding-bottom:1em">
+                <h1>{{ movie.overall_rating }}</h1>
+
+            </div>
+            <div class="btn-group-vertical"
+                 style="float:right;text-align:center;background-color:#3d4954;width:7.95em; color:#df691a">
+                <b style="font-size:1.5em">MY &nbsp; VOTE</b>
+
+                <form action="/rate_movie/" method="get" id="voteform">
 					<span class="star-rating">
                       <input type="radio" name="rating" value="1" onchange="submit"><i></i>
                       <input type="radio" name="rating" value="2" onchange="submit"><i></i>
@@ -43,10 +44,10 @@
                       <input type="radio" name="rating" value="4" onchange="submit"><i></i>
                       <input type="radio" name="rating" value="5" onchange="submit"><i></i>
                     </span>
-                 <input name="movie_id" hidden="true" value="{{ movie_id }}">
-            </form>
-            <!--<h4 class="btn btn-default" style = "background-color:#2b3e50" >Watchlist</h4>-->
+                    <input name="movie_id" hidden="true" value="{{ movie_id }}">
+                </form>
+                <!--<h4 class="btn btn-default" style = "background-color:#2b3e50" >Watchlist</h4>-->
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
