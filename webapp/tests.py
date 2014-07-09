@@ -5,6 +5,7 @@ from webapp.recommendations_generator import RecommendationsGenerator
 
 
 class ColorCodingTest(TestCase):
+
     def test_color_code_large_number(self):
         actual = generate_color_code(100.32)
         expected = "success"
@@ -15,7 +16,9 @@ class ColorCodingTest(TestCase):
         expected = "warning"
         self.assertEqual(actual, expected)
 
+
 class RecommendationsTest(TestCase):
+
     def test_user_genre_ratings(self):
         generator = RecommendationsGenerator("user")
         x = generator.calculate_genre_average()

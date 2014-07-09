@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 
 
 class ReviewParser():
+
     """Extracts the text from an html page, containing a review"""
 
     @staticmethod

@@ -8,6 +8,7 @@ movie = imdb.find_movie_by_id("tt0382932")
 
 
 class TestPerson(unittest.TestCase):
+
     def test_name(self):
         self.assertIsNotNone(movie.credits)
 

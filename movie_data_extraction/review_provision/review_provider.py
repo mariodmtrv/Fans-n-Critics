@@ -1,7 +1,5 @@
-import nltk
-
-
 class ReviewProvider(object):
+
     """Collects the data from a review url and produces an evaluation result"""
 
     def __init__(self, article_url):

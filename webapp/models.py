@@ -12,7 +12,8 @@ class Movie(models.Model):
 
 
 class RatingEngine(models.Model):
-    rating = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(10.0)])
+    rating = models.FloatField(
+        validators=[MinValueValidator(0.0), MaxValueValidator(10.0)])
     votes_count = models.IntegerField(validators=[MinValueValidator(1)])
     engine_name = models.CharField(max_length=25)
     engine_logo = models.CharField(max_length=80)
@@ -20,7 +21,8 @@ class RatingEngine(models.Model):
 
 
 class MovieReview(models.Model):
-    rating = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(10.0)])
+    rating = models.FloatField(
+        validators=[MinValueValidator(0.0), MaxValueValidator(10.0)])
     link_address = models.CharField(max_length=80)
     date = models.DateField()
     movie_id = models.ForeignKey(Movie)
@@ -29,4 +31,5 @@ class MovieReview(models.Model):
 class UserRatings(models.Model):
     username = models.CharField(max_length=25)
     movie_id = models.ManyToManyField(Movie)
-    rating = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(5.0)])
+    rating = models.FloatField(
+        validators=[MinValueValidator(0.0), MaxValueValidator(5.0)])

@@ -4,6 +4,7 @@ import urllib
 
 
 class ReviewCrawlerTest(unittest.TestCase):
+
     def test_search_url_extraction(self):
         '''
         Mocks an API response to test whether Search results URL extraction is correct

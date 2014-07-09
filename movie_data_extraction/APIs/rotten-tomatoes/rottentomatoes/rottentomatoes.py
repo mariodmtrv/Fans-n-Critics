@@ -25,6 +25,7 @@ from rottentomatoes_api_key import API_KEY
 
 
 class RT(object):
+
     """
     An easy-to-use Python wrapper for the Rotten Tomatoes API.
 

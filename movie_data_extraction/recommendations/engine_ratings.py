@@ -1,7 +1,5 @@
-from RatingEngine import RatingEngine
-
-
 class EngineRatings():
+
     """
     Stores the movie ratings
     """
@@ -12,4 +10,3 @@ class EngineRatings():
 
     def set_rating(self, engine):
         self.__engines_data[engine.engine_name] = engine.rating
-

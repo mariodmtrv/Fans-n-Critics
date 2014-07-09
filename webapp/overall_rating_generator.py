@@ -2,7 +2,10 @@ __author__ = 'mario-dimitrov'
 from webapp.models import Movie
 from webapp.models import RatingEngine
 from webapp.models import MovieReview
+
+
 class OverallRatingGenerator():
+
     def __init__(self, movie_id):
         self.rating_engines = RatingEngine.objects.filter(movie_id=movie_id)
         self.reviews = MovieReview.objects.filter(movie_id=movie_id)

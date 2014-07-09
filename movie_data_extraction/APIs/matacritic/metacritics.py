@@ -2,6 +2,8 @@ import requests
 import bs4
 
 # It's "seems" a good idea to use this "enum", for now
+
+
 class Category(object):
     ALL = 0
     MOVIE = 1
@@ -16,6 +18,7 @@ class Category(object):
 # Contains info about the query to be made
 class Query(object):
     # Standard constructor (w/ parameters)
+
     def __init__(self, category, terms):
         self.category = category
         self.terms = terms
@@ -37,6 +40,7 @@ class Query(object):
 
 # This class represents a generic resource found at Metacritic
 class Resource(object):
+
     def __init__(self, name, date, category, metascore, userscore, description):
         self.name = name
         self.date = date
@@ -47,12 +51,14 @@ class Resource(object):
 
 
 class Game(Resource):
+
     def __init__(self, name, date, category, metascore, userscore, description, platform):
         super.__init__(name, date, category, metascore, userscore, description)
         self.platform = platform
 
 
 class Response(object):
+
     def __init__(self, status, content):
         self.status = status
         self.content = content
@@ -62,6 +68,7 @@ class Response(object):
 
 
 class Browser(object):
+
     def get(self, url):
         request = requests.get(url)
         response = Response(request.status_code, request.content)
@@ -69,6 +76,7 @@ class Browser(object):
 
 
 class Scraper(object):
+
     def __init__(self):
         self.browser = Browser()
         self.response = ""
@@ -86,7 +94,8 @@ class Scraper(object):
         metascore = self._extract_metascore()
         userscore = self._extract_userscore()
         description = self._extract_description()
-        resource = Resource(name, date, category, metascore, userscore, description)
+        resource = Resource(
+            name, date, category, metascore, userscore, description)
         return resource
 
     def _extract_name(self):

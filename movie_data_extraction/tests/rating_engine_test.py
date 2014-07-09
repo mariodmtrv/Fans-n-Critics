@@ -5,6 +5,7 @@ from movie_data_extraction.rating_engines.imdb_rating_engine import IMDBRatingEn
 
 
 class IMDBTest(unittest.TestCase):
+
     def test_rating_extraction(self):
         engine = IMDBRatingEngine('tt0071853')
         expected_rating = 8.4

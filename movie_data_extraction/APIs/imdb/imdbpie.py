@@ -20,6 +20,7 @@ sha1_key = hashlib.sha1(api_key.encode('utf-8')).hexdigest()
 
 
 class Imdb(object):
+
     def __init__(self, options=None):
         self.locale = 'en_US'
         self.base_uri = base_uri
@@ -29,7 +30,8 @@ class Imdb(object):
 
         self.options = options
         if options.get('anonymize') is True:
-            self.base_uri = 'youtubeproxy.org/default.aspx?prx=https://{0}'.format(self.base_uri)
+            self.base_uri = 'youtubeproxy.org/default.aspx?prx=https://{0}'.format(
+                self.base_uri)
 
         if options.get('exclude_episodes') is True:
             self.exclude_episodes = True
@@ -47,7 +49,8 @@ class Imdb(object):
                           "locale": self.locale,
                           "timestamp": int(time.time())}
 
-        query_params = dict(list(default_params.items()) + list(params.items()))
+        query_params = dict(
+            list(default_params.items()) + list(params.items()))
         query_params = urlencode(query_params)
         return 'https://{0}{1}?{2}'.format(self.base_uri, path, query_params)
 
@@ -61,7 +64,7 @@ class Imdb(object):
         if result["data"].get('tconst') != result["data"].get('news').get('channel'):
             return False
 
-        #get the full cast information, add key if not present
+        # get the full cast information, add key if not present
         result["data"][str("credits")] = self.get_credits(imdb_id)
 
         if self.exclude_episodes is True and result["data"].get('type') == 'tv_episode':
@@ -103,7 +106,7 @@ class Imdb(object):
         if match:
             id_num = match[0]
             if len(id_num) is not 7:
-                #pad id to 7 digits
+                # pad id to 7 digits
                 id_num = id_num.zfill(7)
             return 'tt' + id_num
         else:
@@ -182,6 +185,7 @@ class Imdb(object):
 
 
 class Person(object):
+
     def __init__(self, **person):
         p = person.get('name')
         # token and label are the persons categorisation
@@ -196,7 +200,8 @@ class Person(object):
         # other primary information about their part
         self.name = p.get('name')
         self.imdb_id = p.get('nconst')
-        self.role = person.get('char').split('/') if person.get('char') else None
+        self.role = person.get('char').split(
+            '/') if person.get('char') else None
         self.job = person.get('job')
 
     def __repr__(self):
@@ -204,6 +209,7 @@ class Person(object):
 
 
 class Title(object):
+
     def __init__(self, **kwargs):
         self.data = kwargs
 
@@ -224,7 +230,7 @@ class Title(object):
 
         self.runtime = None
         if 'runtime' in self.data:
-            #mins
+            # mins
             self.runtime = str(int((self.data['runtime']['time'] / 60)))
 
         self.poster_url = None
@@ -233,7 +239,8 @@ class Title(object):
 
         self.cover_url = None
         if 'image' in self.data and 'url' in self.data['image']:
-            self.cover_url = '{}_SX214_.jpg'.format(self.data['image']['url'].replace('.jpg', ''))
+            self.cover_url = '{}_SX214_.jpg'.format(
+                self.data['image']['url'].replace('.jpg', ''))
 
         self.release_date = None
         if 'release_date' in self.data and 'normal' in self.data['release_date']:
@@ -284,10 +291,12 @@ class Title(object):
                                     'label': credit.get('label'),
                                     'job': person.get('job'),
                                     'attr': person.get('attr')}
-                    person = dict(list(person_extra.items()) + list(person.items()))
+                    person = dict(
+                        list(person_extra.items()) + list(person.items()))
                     if 'name' in person:
                         # some 'special' credits such as script rewrites have different formatting
-                        # check for 'name' is a temporary fix for this, we lose a minimal amount of data from this
+                        # check for 'name' is a temporary fix for this, we lose
+                        # a minimal amount of data from this
                         self.credits.append(Person(**person))
 
         # Trailers
@@ -298,6 +307,7 @@ class Title(object):
 
 
 class Image(object):
+
     def __init__(self, **image):
         self.caption = image.get('caption')
         self.url = image.get('image').get('url')

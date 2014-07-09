@@ -3,10 +3,11 @@ from movie_data_extraction.rating_engines.rating_engine import RatingEngine
 
 
 class IMDBRatingEngine(RatingEngine):
+
     """Represents the IMDB rating engine and its results for a movie"""
 
     def __init__(self, movie_id):
-        #RatingEngine.__init__(self)
+        # RatingEngine.__init__(self)
         self.__movie_id = movie_id
         imdb = Imdb()
         try:

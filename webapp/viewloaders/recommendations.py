@@ -9,7 +9,7 @@ from webapp.recommendations_generator import RecommendationsGenerator
 
 
 def recommend(user):
-    generator = RecommendationsGenerator(user)
+    #generator = RecommendationsGenerator(user)
     """TODO"""
     class Result():
         image = '../static/images/men.jpg'

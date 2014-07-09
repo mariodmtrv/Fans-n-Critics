@@ -3,18 +3,17 @@
     <title>Fans+ Critics Your movie concierge</title>
     <link href="{{ STATIC_URL }}/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="{{ STATIC_URL }}/css/stars.css" rel="stylesheet" type="text/css">
+    <link href="{{ STATIC_URL }}/css/register.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ STATIC_URL }}/css/tile-style.css"/>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}/js/jquery.webRating.js"></script>
-    <script src="../static/js/tiles.js"></script>
-    <script src="../static/js/modernizr-1.5.min.js"></script>
-    <script src="../static/js/stars.js"></script>
-
+    <script src="{{ STATIC_URL }}/js/tiles.js"></script>
+    <script src="{{ STATIC_URL }}/js/modernizr-1.5.min.js"></script>
+    <script src="{{ STATIC_URL }}/js/stars.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/css/search-style.css"/>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}/js/search.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}/js/search.js"></script>
 </head>
 <body>
@@ -74,13 +73,21 @@
                             <li><a href="#">Preferences</a></li>
                             <li class="divider"></li>
                             <form action="/logout/" method="post" accept-charset="UTF-8">
-                                <div class="btn btn-danger" type="button" onclick="submit"
-                                     style="display: block">Log out</div>
+                                {% csrf_token %}
+                                <input class="btn btn-danger" style="clear: left; width: 100%; height: 32px; font-size: 13px;"
+                               type="submit" name="commit" value="Logout"/>
                             </form>
                         </ul>
                         {% else %}
                     </li>
-                    <li><a id="register" style="font-size:1.4em;">Register</a></li>
+                    <li>
+                    <!-- Button to trigger modal -->
+                    <a href="#myModal" role="button" class="btn" data-toggle="modal">Register</a>
+
+                    {% include "register.html" %}
+
+
+                    </li>
                     <li class="dropdown">
                     <!-- User account details-->
 

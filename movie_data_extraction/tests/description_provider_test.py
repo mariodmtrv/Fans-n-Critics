@@ -6,6 +6,7 @@ import datetime
 
 
 class DescriptionProviderTest(unittest.TestCase):
+
     def test_movie_name_extraction(self):
         provider = DescriptionProvider("tt0071853")
         actual = provider.get_name()
@@ -14,7 +15,7 @@ class DescriptionProviderTest(unittest.TestCase):
 
     def test_movie_genres_extraction(self):
         provider = DescriptionProvider("tt0071853")
-        actual = provider.get_genre_list();
+        actual = provider.get_genre_list()
         expected = ['Adventure', 'Comedy', 'Fantasy']
         self.assertEqual(actual, expected)
 

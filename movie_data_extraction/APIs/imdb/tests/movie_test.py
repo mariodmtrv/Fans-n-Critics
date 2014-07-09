@@ -9,9 +9,11 @@ movie = imdb.find_movie_by_id("tt0382932")
 
 
 class TestTitle(unittest.TestCase):
+
     @staticmethod
     def valid_poster(poster_url):
-        match = re.findall(r'http://ia.media-imdb.com/images/.*/', poster_url)[0]
+        match = re.findall(
+            r'http://ia.media-imdb.com/images/.*/', poster_url)[0]
         if match:
             return True
         else:

@@ -2,6 +2,7 @@ from movie_data_extraction.APIs.imdb.imdbpie import Imdb
 
 
 class MovieSearch():
+
     """Processes a query to match it to a movie"""
 
     def __init__(self):

@@ -8,11 +8,13 @@ images = imdb.title_images("tt0468569")
 
 
 class TestImage(unittest.TestCase):
+
     def test_results(self):
         self.assertGreaterEqual(len(images), 107)
 
     def test_caption(self):
-        self.assertEqual(images[0].caption, 'Still of Gary Oldman in The Dark Knight')
+        self.assertEqual(
+            images[0].caption, 'Still of Gary Oldman in The Dark Knight')
 
     def test_url(self):
         self.assertEqual(

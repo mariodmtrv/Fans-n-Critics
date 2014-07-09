@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^login/$', 'webapp.views.login_view'),
     url(r'^logout/$', 'webapp.views.logout_view'),
     url(r'^movies/(\w){5,}/$', 'webapp.views.movie_info'),
-    url(r'^rate_movie/$','webapp.views.rate_movie'),
+    url(r'^rate_movie/$', 'webapp.views.rate_movie'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

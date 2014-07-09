@@ -8,6 +8,7 @@ movie = imdb.find_movie_by_id("tt0382932")
 
 
 class TestTrailer(unittest.TestCase):
+
     def test_trailer_url(self):
         self.assertIsNotNone(movie.trailers)
 

@@ -7,6 +7,7 @@ imdb = Imdb({'anonymize': False})
 
 
 class TestSearch(unittest.TestCase):
+
     def test_batman(self):
         self.results = imdb.find_by_title("batman")
         self.assertGreater(len(self.results), 15)

@@ -1,5 +1,6 @@
 class RatingEngine:
     # Add JSON handling functionality
+
     """Represents a voting engine system
        like IMDB or RottenTomatoes"""
 
@@ -21,5 +22,3 @@ class RatingEngine:
     @property
     def engine_logo(self):
         pass
-
-

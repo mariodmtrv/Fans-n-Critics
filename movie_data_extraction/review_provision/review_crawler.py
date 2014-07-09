@@ -3,7 +3,10 @@ import json
 import urllib.request
 import urllib.parse
 #from html.parser import HTMLParser
+
+
 class ReviewCrawler():
+
     '''
     Performs a website (Google) search with various queries for the given movie and collects the top results
     '''

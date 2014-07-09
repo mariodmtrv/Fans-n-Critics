@@ -1,9 +1,10 @@
 import datetime
 import re
-from  movie_data_extraction.APIs.imdb.imdbpie import Imdb
+from movie_data_extraction.APIs.imdb.imdbpie import Imdb
 
 
 class DescriptionProvider():
+
     """Defines the provider of the movie description"""
 
     def __init__(self, movie_id):
@@ -15,7 +16,8 @@ class DescriptionProvider():
         self.__genres = movie.genres
         self.__poster = movie.poster_url
         released = self.__get_released_date(movie)
-        self.__released = datetime.date(int(released[0]), int(released[1]), int(released[2]))
+        self.__released = datetime.date(
+            int(released[0]), int(released[1]), int(released[2]))
 
     @staticmethod
     def __get_released_date(movie):

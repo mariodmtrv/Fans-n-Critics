@@ -24,6 +24,5 @@ def generate_rating_data(movie_id):
     q.votes = 1115
     q.link_address = "http://www.userlogos.org/files/logos/jumpordie/rottentomatoes_03.png"
 
-
     ratings = [p, q]
     return ratings
