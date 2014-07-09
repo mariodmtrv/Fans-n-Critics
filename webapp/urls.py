@@ -7,6 +7,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^register/$', 'webapp.views.register'),
     url(r'^search/$', 'webapp.views.search'),
     url(r'^login/$', 'webapp.views.login_view'),
     url(r'^logout/$', 'webapp.views.logout_view'),

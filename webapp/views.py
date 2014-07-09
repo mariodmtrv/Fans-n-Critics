@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 
 from webapp.viewloaders.rate_movie import rate_the_movie
@@ -29,6 +30,35 @@ def search(request):
     alternatives_result = generate_alternatives(query)
     return render_to_response('base.html', {'alternatives': alternatives_result},
                               context_instance=RequestContext(request))
+def register(request):
+    first_name = request.POST.get('first_name')
+    username = request.POST.get('username')
+    last_name = request.POST.get('last_name')
+    email = request.POST.get('email')
+    password = request.POST.get('password')
+    password_confirmation = request.POST.get('password_confirmation')
+    if password == password_confirmation:
+        count = User.objects.filter(username = username).count()
+        if count>0:
+            return render_to_response('base.html',
+                                      {"should_show_message": "true",
+                                       "message_header":"Failed", "message_content":"This username exists"},
+                                      context_instance=RequestContext(request))
+        else:
+            user = User()
+            user.password=password
+            user.first_name = first_name
+            user.last_name = last_name
+            user.email = email
+            user.username = username
+            user.save()
+            return render_to_response('base.html',
+                                      {"should_show_message": "true", "message_header":"Created user "+username,
+                                       "message_content":"Your account has been confirmed. Now you may login."},
+                                      context_instance=RequestContext(request))
+    return render_to_response('base.html',context_instance=RequestContext(request))
+
+
 
 def rate_movie(request):
     print("Form accepted")
@@ -50,7 +80,9 @@ def movie_info(request, movie_id):
     ratings = generate_rating_data(movie_res_id)
     ratings_table = generate_review_table(movie_res_id)
     print(movie_res_id)
-    return render_to_response("movie-article.html", {"movie_id": movie_res_id, "movie": movie_data, "ratings": ratings, "ratings_table": ratings_table},
+    return render_to_response("movie-article.html",
+                              {"movie_id": movie_res_id, "movie": movie_data,
+                               "ratings": ratings, "ratings_table": ratings_table},
                               context_instance=RequestContext(request))
 
 
@@ -63,10 +95,14 @@ def login_view(request):
             'username', ''), password=request.POST.get('password', ''))
         if user is not None:
             login(request, user)
-            return render_to_response('base.html', context_instance=RequestContext(request))
+            return render_to_response('base.html',  {"should_show_message": "true", "message_header":"Welcome",
+                                       "message_content":"Oh, yeah, welcome "+username },context_instance=RequestContext(request))
         else:
-            print(username)
-            return HttpResponse('<h1>You enter the wrong neighbourhood stalker flower</h1>', status=401)
+            return render_to_response('base.html',
+                                      {"should_show_message": "true", "message_header":"Failed",
+                                       "message_content":"Authentication failed for user "+username +
+                                                         ". Please check your data and try again"},
+                                      context_instance=RequestContext(request))
 
 
 def logout_view(request):

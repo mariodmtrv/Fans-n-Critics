@@ -112,6 +112,12 @@
                 </li>
             </ul>
         </div>
+    {% if should_show_message == "true" %}
+  <div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <strong>{{ message_header }}</strong> {{ message_content }}
+      {% endif %}
+</div>
     </nav>
     <!--End Navigation bar-->
 </header>
