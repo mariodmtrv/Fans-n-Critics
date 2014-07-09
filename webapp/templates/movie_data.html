@@ -1,7 +1,9 @@
 {% block movie_data %}
     <h2 id="movieName" style="margin-right:15%;clear:both">{{ movie.title }}</h2>
     <div id="moviePoster" style="float:left;min-width:25%;">
-        <img src="{{ STATIC_URL }}/resources/movie_posters//{{ movie.poster }}" style="max-width:150px">
+
+        <img src="{{ STATIC_URL }}/resources/movie_posters//{{ movie.poster }}" style="width:200px;display: block">
+
     </div>
     <div id="dataContent" style="margin-left:2%;width:69%;float:right">
         <p id="releaseDate" style="font-size:1.1em;"><b>Release date:</b> <span
