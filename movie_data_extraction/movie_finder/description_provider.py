@@ -13,8 +13,14 @@ class DescriptionProvider():
         movie = imdb.find_movie_by_id(self.__movie_id)
         self.__title = movie.title
         self.__description = movie.plot_outline
+        if not self.__description:
+            self.__description = "No description available"
         self.__genres = movie.genres
+        if not self.__genres:
+            self.__genres = "Unknown"
         self.__poster = movie.poster_url
+        if not self.__poster:
+            self.__poster = "http://upload.wikimedia.org/wikipedia/en/f/f9/No-image-available.jpg"
         released = self.__get_released_date(movie)
         self.__released = datetime.date(
             int(released[0]), int(released[1]), int(released[2]))
@@ -22,6 +28,8 @@ class DescriptionProvider():
     @staticmethod
     def __get_released_date(movie):
         released_string = movie.release_date
+        if not released_string:
+            return [1900, 1, 1]
         match = re.findall(r'(\d+)', released_string)
         return match
 

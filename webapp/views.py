@@ -5,12 +5,14 @@ from django.template import RequestContext
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from movie_data_extraction.rating_engines import rating_engine
+from webapp.models import UserRatings
 
 from webapp.viewloaders.rate_movie import rate_the_movie
 from webapp.viewloaders.movie_data import generate_movie_data
 from webapp.viewloaders.rating_engines import generate_rating_data
 from webapp.viewloaders.review_table import generate_review_table
-from webapp.viewloaders.generate_alternatives import generate_alternatives
+from webapp.viewloaders.generate_alternatives import Alternatives
 from webapp.viewloaders.generate_recommendations_list import generate_list
 
 
@@ -30,8 +32,10 @@ and repacks the result for the template
 
 
 def search(request):
+    print("Hello")
+    u = list(UserRatings.objects.all())
     query = request.GET['q']
-    alternatives_result = generate_alternatives(query)
+    alternatives_result = Alternatives.generate_alternatives(query)
     return render_to_response('base.html', {'alternatives': alternatives_result},
                               context_instance=RequestContext(request))
 

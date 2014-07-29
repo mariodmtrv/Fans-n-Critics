@@ -1,7 +1,10 @@
+from django.db.models.sql.datastructures import Date
 from django.test import TestCase
+from movie_data_extraction.rating_engines import rating_engine
 
 from webapp.viewloaders.color_code_calc import generate_color_code
 from recommendations.recommendations_generator import RecommendationsGenerator
+from webapp.models import UserRatings, Movie
 
 
 class ColorCodingTest(TestCase):
@@ -20,4 +23,3 @@ class RecommendationsTest(TestCase):
     def test_user_genre_ratings(self):
         generator = RecommendationsGenerator("user")
         x = generator.calculate_genre_average()
-        print(x)
