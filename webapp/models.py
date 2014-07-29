@@ -31,6 +31,6 @@ class MovieReview(models.Model):
 
 class UserRatings(models.Model):
     username = models.CharField(max_length=25)
-    movie_id = models.ManyToManyField(Movie)
+    movie = models.ForeignKey(Movie)
     rating = models.FloatField(
         validators=[MinValueValidator(0.0), MaxValueValidator(5.0)])

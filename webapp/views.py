@@ -32,8 +32,6 @@ and repacks the result for the template
 
 
 def search(request):
-    print("Hello")
-    u = list(UserRatings.objects.all())
     query = request.GET['q']
     alternatives_result = Alternatives.generate_alternatives(query)
     return render_to_response('base.html', {'alternatives': alternatives_result},
@@ -47,7 +45,8 @@ def register(request):
     email = request.POST.get('email')
     password = request.POST.get('password')
     password_confirmation = request.POST.get('password_confirmation')
-    if password == password_confirmation:
+
+    if password and password == password_confirmation:
         count = User.objects.filter(username=username).count()
         if count > 0:
             return render_to_response('base.html',
@@ -68,16 +67,14 @@ def register(request):
                                       context_instance=RequestContext(request))
     return render_to_response('base.html', context_instance=RequestContext(request))
 
-
 def rate_movie(request):
-    print("Form accepted")
     if request.user.is_authenticated():
         username = request.user.username
-    rating = request.GET['rating']
-    movie_id = request.GET['movie_id']
+    movie_id = request.POST['movie_id']
+    rating = request.POST['rating']
     print("User voted" + rating + "    " + movie_id + "    " + username)
     rate_the_movie(
-        movie_id, username, rating, context_instance=RequestContext(request))
+        movie_id, username, rating)
 
 
 def movie_info(request, id):

@@ -89,16 +89,12 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 1.2em">Login </a>
                     <ul class="dropdown-menu">
 
-                    <form action="/login/" method="post" accept-charset="UTF-8">
-                        {% csrf_token %}
+                    <form style="padding: 15px;" action="/login/" method="post" accept-charset="UTF-8">
+                    {% csrf_token %}
                         <input id="user_username" style="margin-bottom: 15px;" type="text" name="username"
                                placeholder="Username" size="30"/>
                         <input id="user_password" style="margin-bottom: 15px;" type="password" name="password"
                                placeholder="Password" size="30"/>
-                        <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox"
-                               name="user[remember_me]" value="1"/>
-                        <label class="string optional" for="user_remember_me"> Remember me</label>
-
                         <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;"
                                type="submit" name="commit" value="Sign In"/>
                     </form>
@@ -118,8 +114,8 @@
 </header>
 <article id="mainDisplayContent">
     {% block content %}
-         <div id="movieContent" style="float:left;width:72%;height: 600px">
-<div class="bs-example">
+        <div id="movieContent" style="float:left;width:73%;height: 600px">
+            <div class="bs-example">
     <div id="displayCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
     	<!-- Carousel indicators -->
         <ol class="carousel-indicators">
@@ -156,8 +152,8 @@
     {% endblock %}
 
 </article>
-<aside id="additionalMenu" style="float:right;min-width:20%;max-width:25%;margin-right:5%;">
-    <img src="{{ STATIC_URL }}/images/vertical-banner.png">
+<aside id="additionalMenu" style="float:right;max-width:20%;margin-right:5%;">
+<img src="{{ STATIC_URL }}/images/vertical-banner.png">
 </aside>
 <!-- Movie view-->
 <section>
@@ -175,7 +171,7 @@
 	</aside>
 -->
 <footer>
-    <p style="text-align:center">2014 Mario Dimitrov</p>
+    <p style="text-align:center;clear:both">2014 Mario Dimitrov</p>
 </footer>
 </body>
 </html>

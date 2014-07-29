@@ -40,13 +40,14 @@
                      style="float:right;text-align:center;background-color:#3d4954;width:7.95em; color:#df691a">
                 <b style="font-size:1.5em">MY &nbsp; VOTE</b>
 
-                <form action="/rate_movie/" method="get" id="voteform">
+                    <form method=post action="/rate_movie/" method="get" id="voteform">
+                        {% csrf_token %}
 					<span class="star-rating">
-                      <input type="radio" name="rating" value="1" onchange="submit"><i></i>
-                      <input type="radio" name="rating" value="2" onchange="submit"><i></i>
-                      <input type="radio" name="rating" value="3" onchange="submit"><i></i>
-                      <input type="radio" name="rating" value="4" onchange="submit"><i></i>
-                      <input type="radio" name="rating" value="5" onchange="submit"><i></i>
+                      <input type="submit" name="rating" value="1" onchange="submit"><i></i>
+                      <input type="submit" name="rating" value="2" onchange="submit"><i></i>
+                      <input type="submit" name="rating" value="3" onchange="submit"><i></i>
+                      <input type="submit" name="rating" value="4" onchange="submit"><i></i>
+                      <input type="submit" name="rating" value="5" onchange="submit"><i></i>
                     </span>
                     <input name="movie_id" hidden="true" value="{{ movie_id }}">
                 </form>
