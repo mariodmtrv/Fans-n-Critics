@@ -83,10 +83,15 @@ def movie_info(request, id):
     ratings = generate_rating_data(movie_res_id)
     ratings_table = generate_review_table(movie_res_id)
     print(movie_res_id)
-    return render_to_response("movie-article.html",
-                              {"movie_id": movie_res_id, "movie": movie_data,
-                               "ratings": ratings, "ratings_table": ratings_table},
-                              context_instance=RequestContext(request))
+    parameters = {"movie_id": movie_res_id, "movie": movie_data,
+                  "ratings": ratings, "ratings_table": ratings_table}
+    if request.user.is_authenticated():
+        recommendations = generate_list(request.user.username)
+        return render_to_response("movie-article.html", dict(list(parameters.items()) + list(recommendations.items())),
+                                  context_instance=RequestContext(request))
+    else:
+        return render_to_response("movie-article.html", parameters,
+                                  context_instance=RequestContext(request))
 
 
 @csrf_protect

@@ -1,7 +1,6 @@
 __author__ = 'mario-dimitrov'
 from webapp.models import Movie
 from webapp.models import UserRatings
-from webapp.overall_rating_generator import OverallRatingGenerator
 
 
 class RecommendationsGenerator():

@@ -34,8 +34,10 @@
                 <h1>{{ movie.overall_rating }}</h1>
 
             </div>
-            <div class="btn-group-vertical"
-                 style="float:right;text-align:center;background-color:#3d4954;width:7.95em; color:#df691a">
+
+            {% if user.is_authenticated %}
+                <div class="btn-group-vertical"
+                     style="float:right;text-align:center;background-color:#3d4954;width:7.95em; color:#df691a">
                 <b style="font-size:1.5em">MY &nbsp; VOTE</b>
 
                 <form action="/rate_movie/" method="get" id="voteform">
@@ -50,6 +52,7 @@
                 </form>
                 <!--<h4 class="btn btn-default" style = "background-color:#2b3e50" >Watchlist</h4>-->
             </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

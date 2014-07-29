@@ -1,5 +1,4 @@
 class DistanceCalculator():
-
     def __init__(self):
         pass
 
@@ -8,4 +7,4 @@ class DistanceCalculator():
         other_movie = []
         for genre_index in range(len(current_movie)):
             value = (
-                current_movie[genre_index] - other_movie[genre_index]) * user_genre_ratings
+                        current_movie[genre_index] - other_movie[genre_index]) * user_genre_ratings

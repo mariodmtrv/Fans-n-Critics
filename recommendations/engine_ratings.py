@@ -1,5 +1,4 @@
 class EngineRatings():
-
     """
     Stores the movie ratings
     """
