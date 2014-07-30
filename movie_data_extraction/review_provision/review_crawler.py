@@ -3,6 +3,8 @@ import json
 import urllib.request
 import urllib.parse
 #from html.parser import HTMLParser
+import requests
+from datetime import datetime
 
 
 class ReviewCrawler():
@@ -31,21 +33,47 @@ class ReviewCrawler():
         url = 'http://ajax.googleapis.com/ajax/services/search/web?v=1.0&%s' % query
         search_response = urllib.request.urlopen(url)
         search_results = search_response.read().decode("utf8")
-        print(search_results)
         return search_results
 
     def from_response(self, response_string):
         self.__urls = self.__generate_results(response_string)
 
     def search_query(self, query):
-        enrichments = ['review', 'movie review']
-        for word in enrichments:
+        ENRICHMENTS = ['review', 'movie review', 'complete review']
+
+        for word in ENRICHMENTS:
             search_response = self.__generate_response(query + word)
             result = self.__generate_results(search_response)
             self.__urls += result
-        # Clear repeating elements
+        self.cleanup_queries()
+
+
+    def cleanup_queries(self):
+        # Cleans up the repeating urls
         collected_urls = set(self.__urls)
         self.__urls = list(collected_urls)
+        # Cleans up the dirty urls containing some known sites
+        processed_urls = self.__urls
+        self.__urls = []
+        FORBIDDEN = ['imdb', 'rottentomatoes', 'metacritic']
+        for url in processed_urls:
+            flag = 0
+            for forbidden in FORBIDDEN:
+                if forbidden in url:
+                    flag = 1
+                    break
+            if flag == 0:
+                self.__urls.append(url)
+        print(self.__urls)
 
     def get_result_url(self, index):
         return self.__urls.__getitem__(index)
+
+    def get_results_count(self):
+        return len(self.__urls)
+
+    def get_result_date(self, index):
+        req = requests.get(self.get_result_url(index))
+        #if req.status_code == 200:
+        return req.headers['Date'][5:16]
+

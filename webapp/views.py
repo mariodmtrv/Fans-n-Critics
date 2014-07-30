@@ -82,7 +82,7 @@ def movie_info(request, id):
     movie_res_id = (regex.findall(request.path)[0][:-1])
     movie_data = generate_movie_data(movie_res_id)
     ratings = generate_rating_data(movie_res_id)
-    ratings_table = generate_review_table(movie_res_id)
+    ratings_table = generate_review_table(movie_data.title)
     print(movie_res_id)
     parameters = {"movie_id": movie_res_id, "movie": movie_data,
                   "ratings": ratings, "ratings_table": ratings_table}

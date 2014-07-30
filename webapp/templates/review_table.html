@@ -12,7 +12,7 @@
     <tbody>
     {% for movie_rating in ratings_table %}
         <tr class=" {{ movie_rating.color_code }} ">
-            <td>1</td>
+            <td>{{ movie_rating.index }}</td>
             <td><a href="{{ movie_rating.link_address }}"> {{ movie_rating.link_address }}</a></td>
             <td>{{ movie_rating.date }}</td>
             <td>{{ movie_rating.rating }}</td>
