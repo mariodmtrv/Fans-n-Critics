@@ -67,6 +67,7 @@ def register(request):
                                       context_instance=RequestContext(request))
     return render_to_response('base.html', context_instance=RequestContext(request))
 
+
 def rate_movie(request):
     if request.user.is_authenticated():
         username = request.user.username
@@ -82,7 +83,7 @@ def movie_info(request, id):
     movie_res_id = (regex.findall(request.path)[0][:-1])
     movie_data = generate_movie_data(movie_res_id)
     ratings = generate_rating_data(movie_res_id)
-    ratings_table = generate_review_table(movie_data.title)
+    ratings_table = generate_review_table(movie_data)
     print(movie_res_id)
     parameters = {"movie_id": movie_res_id, "movie": movie_data,
                   "ratings": ratings, "ratings_table": ratings_table}

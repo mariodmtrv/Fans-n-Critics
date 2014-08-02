@@ -6,9 +6,9 @@ class AttitudeRanker():
     """
     Calculates the rank of words based on dictionaries
     """
-    __POSITIVE = 1
-    __NEGATIVE = -1
-    __NOT_IN_LISTS = 0
+    POSITIVE = 1
+    NEGATIVE = -1
+    NOT_RATED = 0
 
     def __init__(self):
         files_relative_path = 'resources/dictionaries'
@@ -25,8 +25,6 @@ class AttitudeRanker():
     def __read_attitude_file(file_path):
         with open(file_path, 'r') as attitude_file:
             file_data = attitude_file.read().split()
-            print(file_data)
-            #.split()
             result_set = set(file_data)
             return result_set
 
@@ -36,8 +34,8 @@ class AttitudeRanker():
         Due to a limited dictionary of words only ranks of positive, negative and not available are in present
         """
         if word in self.__positives:
-            return self.__POSITIVE
+            return self.POSITIVE
         elif word in self.__negatives:
-            return self.__NEGATIVE
+            return self.NEGATIVE
         else:
-            return self.__NOT_IN_LISTS
+            return self.NOT_RATED

@@ -8,7 +8,6 @@ from datetime import datetime
 
 
 class ReviewCrawler():
-
     '''
     Performs a website (Google) search with various queries for the given movie and collects the top results
     '''
@@ -39,7 +38,7 @@ class ReviewCrawler():
         self.__urls = self.__generate_results(response_string)
 
     def search_query(self, query):
-        ENRICHMENTS = ['review', 'movie review', 'complete review']
+        ENRICHMENTS = ['review', 'movie review', 'complete review', 'how is']
 
         for word in ENRICHMENTS:
             search_response = self.__generate_response(query + word)
@@ -64,16 +63,9 @@ class ReviewCrawler():
                     break
             if flag == 0:
                 self.__urls.append(url)
-        print(self.__urls)
 
     def get_result_url(self, index):
         return self.__urls.__getitem__(index)
 
     def get_results_count(self):
         return len(self.__urls)
-
-    def get_result_date(self, index):
-        req = requests.get(self.get_result_url(index))
-        if req.status_code == 200:
-            return req.headers['Date'][5:16]
-        return 'Unknown'

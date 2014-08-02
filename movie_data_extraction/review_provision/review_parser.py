@@ -15,12 +15,20 @@ class ReviewParser():
         words = ReviewParser.__extract_words(html_page)
         return words
 
-    @staticmethod
-    def extract_page(review_url):
+    def extract_page(self, review_url):
         req = requests.get(review_url)
         if req.status_code == 200:
+            self.__review_date = req.headers['Date'][5:16]
+        else:
+            self.__review_date = 'Unknown'
+
+        if req.status_code == 200:
             return req.text
+
         raise "Failed to extract page"
+
+    def get_result_date(self):
+        return self.__review_date
 
     @staticmethod
     def __visible(element):
@@ -49,6 +57,7 @@ class ReviewParser():
         # Does not contain simple stopwords or digits
         words_list = [item for item in merged_list if len(item) > 2 and not bool(_digits.search(item))]
         return list(words_list)
+
 
 
 

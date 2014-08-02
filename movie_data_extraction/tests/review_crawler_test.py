@@ -27,7 +27,7 @@ class ReviewCrawlerTest(unittest.TestCase):
         req = requests.get('http://www.rottentomatoes.com/m/monty_python_and_the_holy_grail/')
         #req = Request('http://www.rottentomatoes.com/m/monty_python_and_the_holy_grail/')
         #webpage = urlopen(req).read()
-        print(req.status_code)
+        self.assertEqual(200, req.status_code)
         #info=response.info()
         #return info['Date']
 
