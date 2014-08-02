@@ -1,19 +1,22 @@
 import urllib.request
 import urllib.parse
 from bs4 import BeautifulSoup
+import requests
 
 
 class ReviewParser():
-
     """Extracts the text from an html page, containing a review"""
 
     @staticmethod
-    def extract_review(review_url):
-        page_content = urllib.request.urlopen(review_url)
-        page_html = page_content.read().decode("utf8")
+    def extract_review_page(review_url):
+        req = requests.get(review_url)
+        print(req['Status'])
+        return req
+
+    @staticmethod
+    def extract_review(page_html):
         parser = BeautifulSoup(page_html)
         str_list = []
-        print(str(review_url).capitalize())
         for element in parser.body:
             string_element = str(element)
             if (not (string_element.startswith("<script>"))):
