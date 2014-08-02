@@ -74,6 +74,6 @@ class ReviewCrawler():
 
     def get_result_date(self, index):
         req = requests.get(self.get_result_url(index))
-        #if req.status_code == 200:
-        return req.headers['Date'][5:16]
-
+        if req.status_code == 200:
+            return req.headers['Date'][5:16]
+        return 'Unknown'
