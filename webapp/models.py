@@ -3,11 +3,11 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Movie(models.Model):
-    movie_id = models.CharField(max_length=25)
+    movie_id = models.CharField(max_length=25, unique=True)
     title = models.CharField(max_length=120)
     description = models.CharField(max_length=250)
-    genres = models.CharField(max_length=300)
     photo_path = "/images/"
+    genres = models.CharField(max_length=200)
     poster = models.CharField(max_length=100)
     released = models.DateField()
 
@@ -18,7 +18,7 @@ class RatingEngine(models.Model):
     votes_count = models.IntegerField(validators=[MinValueValidator(1)])
     engine_name = models.CharField(max_length=25)
     engine_logo = models.CharField(max_length=80)
-    movie_id = models.ForeignKey(Movie)
+    movie = models.ForeignKey(Movie)
 
 
 class MovieReview(models.Model):
@@ -26,10 +26,15 @@ class MovieReview(models.Model):
         validators=[MinValueValidator(0.0), MaxValueValidator(10.0)])
     link_address = models.CharField(max_length=80)
     date = models.DateField()
-    movie_id = models.ForeignKey(Movie)
+    movie = models.ForeignKey(Movie)
 
 
-class UserRatings(models.Model):
+class MovieGenre(models.Model):
+    genre_id = models.IntegerField()
+    movie = models.ForeignKey(Movie)
+
+
+class UserRating(models.Model):
     username = models.CharField(max_length=25)
     movie = models.ForeignKey(Movie)
     rating = models.FloatField(

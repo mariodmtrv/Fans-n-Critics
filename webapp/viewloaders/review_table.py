@@ -16,7 +16,7 @@ class MovieReview():
         self.date = date
         self.rating = rating
         self.color_code = generate_color_code(rating)
-        self.index = index + 1
+        self.index = index
 
 
 def generate_review_table(movie_data):

@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from movie_data_extraction.rating_engines import rating_engine
-from webapp.models import UserRatings
+from webapp.models import UserRating
 
 from webapp.viewloaders.rate_movie import rate_the_movie
 from webapp.viewloaders.movie_data import generate_movie_data

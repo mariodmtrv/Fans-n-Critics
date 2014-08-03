@@ -1,13 +1,13 @@
 __author__ = 'mario-dimitrov'
 from webapp.models import Movie
-from webapp.models import UserRatings
+from webapp.models import UserRating
 
 
 class RecommendationsGenerator():
     user_ratings = {}
 
     def __init__(self, user):
-        ratings = UserRatings.objects.filter(username=user)
+        ratings = UserRating.objects.filter(username=user)
         print(ratings)
 
         for rating in ratings:
