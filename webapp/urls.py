@@ -1,9 +1,9 @@
-import webapp
-
 __author__ = 'mario-dimitrov'
-from webapp import views
 from django.conf.urls import url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+from webapp import views
+
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
@@ -14,5 +14,4 @@ urlpatterns = [
     url(r'^movies/(\w){5,}/$', 'webapp.views.movie_info'),
     url(r'^rate_movie/$', 'webapp.views.rate_movie'),
 ]
-
 urlpatterns += staticfiles_urlpatterns()

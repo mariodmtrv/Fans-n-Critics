@@ -5,10 +5,11 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-                       # Examples:
-                       # url(r'^$', 'Fans_n_Critics.views.home', name='home'),
-                       # url(r'^blog/', include('blog.urls')),
-
                        url(r'^admin/', include(admin.site.urls)),
                        url(r'', include('webapp.urls')),
                        )
+handler404 = 'webapp.views.failed'
+handler500 = 'webapp.views.failed'
+handler403 = 'webapp.views.failed'
+handler400 = 'webapp.views.failed'
+

@@ -4,13 +4,13 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render
 
 from webapp.viewloaders.rate_movie import rate_the_movie
 from webapp.viewloaders.movie_data import generate_all_movie_parameters
 from webapp.viewloaders.generate_alternatives import Alternatives
 from webapp.viewloaders.generate_recommendations_list import generate_list
 from webapp.viewloaders.create_user import create_user
-
 
 def index(request):
     if request.user.is_authenticated():
@@ -112,3 +112,7 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return render_to_response('base.html', context_instance=RequestContext(request))
+
+
+def failed(request):
+    return render(request, 'error-page.html')
