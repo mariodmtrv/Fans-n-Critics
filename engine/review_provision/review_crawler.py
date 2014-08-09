@@ -36,7 +36,7 @@ class ReviewCrawler():
         self.__urls = self.__generate_results(response_string)
 
     def search_query(self, query):
-        ENRICHMENTS = ['review', 'movie review', 'complete review', 'how is']
+        ENRICHMENTS = ['review', 'movie review', 'complete review']
 
         for word in ENRICHMENTS:
             search_response = self.__generate_response(query + word)
@@ -52,7 +52,7 @@ class ReviewCrawler():
         # Cleans up the dirty urls containing some known sites
         processed_urls = self.__urls
         self.__urls = []
-        FORBIDDEN = ['imdb', 'rottentomatoes', 'metacritic']
+        FORBIDDEN = ['imdb', 'rottentomatoes', 'metacritic', 'youtube', 'google']
         for url in processed_urls:
             flag = 0
             for forbidden in FORBIDDEN:

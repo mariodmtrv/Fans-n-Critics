@@ -1,5 +1,6 @@
 __author__ = 'mario-dimitrov'
-from webapp.viewloaders.recommendations import recommend
+from webapp.template_classes.recommendations import recommend
+
 
 def generate_list(username):
     recommendations = recommend(username)

@@ -6,9 +6,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
 
 from webapp.viewloaders.rate_movie import rate_the_movie
-from webapp.viewloaders.movie_data import generate_movie_data
-from webapp.viewloaders.rating_engines import generate_rating_data
-from webapp.viewloaders.review_table import generate_review_table
+from webapp.viewloaders.movie_data import generate_all_movie_parameters
 from webapp.viewloaders.generate_alternatives import Alternatives
 from webapp.viewloaders.generate_recommendations_list import generate_list
 from webapp.viewloaders.create_user import create_user
@@ -48,8 +46,8 @@ def register(request):
     if (not created):
         return render_to_response('base.html',
                                   {"should_show_message": "true",
-                                       "message_header": "Failed", "message_content": "This username exists"},
-                                      context_instance=RequestContext(request))
+                                   "message_header": "Failed", "message_content": "This username exists"},
+                                  context_instance=RequestContext(request))
     else:
         return render_to_response('base.html',
                                   {"should_show_message": "true", "message_header": "Created user " + username,
@@ -63,20 +61,20 @@ def rate_movie(request):
         username = request.user.username
     movie_id = request.POST['movie_id']
     rating = request.POST['rating']
-    print("User voted" + rating + "    " + movie_id + "    " + username)
-    rate_the_movie(
-        movie_id, username, rating)
+    rate_the_movie(movie_id, username, rating)
+    parameters = {"should_show_message": "true",
+                  "message_header": "Success", "message_content": "Thank you for your vote"}
+    movie_data = generate_all_movie_parameters(movie_id)
+    recommendations = generate_list(request.user.username)
+    return render_to_response("movie-article.html",
+                              dict(list(parameters.items()) + list(recommendations.items()) + list(movie_data.items())),
+                              context_instance=RequestContext(request))
 
 
 def movie_info(request, id):
     regex = re.compile('\w+/$')
     movie_res_id = (regex.findall(request.path)[0][:-1])
-    movie_data = generate_movie_data(movie_res_id)
-    ratings = generate_rating_data(movie_res_id)
-    ratings_table = generate_review_table(movie_data)
-    print(movie_res_id)
-    parameters = {"movie_id": movie_res_id, "movie": movie_data,
-                  "ratings": ratings, "ratings_table": ratings_table}
+    parameters = generate_all_movie_parameters(movie_res_id)
     if request.user.is_authenticated():
         recommendations = generate_list(request.user.username)
         return render_to_response("movie-article.html", dict(list(parameters.items()) + list(recommendations.items())),

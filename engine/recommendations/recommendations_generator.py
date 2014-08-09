@@ -6,8 +6,12 @@ from webapp.models import UserRating
 class RecommendationsGenerator():
     user_ratings = {}
 
-    def __init__(self, user):
-        ratings = UserRating.objects.filter(username=user)
+    def __init__(self, user, movies):
+        self.user = user
+        self.movies = movies
+
+    def calculate_ratings(self):
+        ratings = UserRating.objects.filter(username=self.user)
         print(ratings)
 
         for rating in ratings:
@@ -41,4 +45,7 @@ class RecommendationsGenerator():
             for genre in movie.genres:
                 if genre in user_ratings_average.keys():
                     rating_difference += user_ratings_average[genre]
-        return []
+
+    def get_recommendations(self):
+        return self.movies[:6]
+

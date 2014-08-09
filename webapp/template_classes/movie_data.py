@@ -2,11 +2,12 @@ __author__ = 'mario-dimitrov'
 
 import urllib.request
 import shutil
+from datetime import datetime
+
 from webapp.viewloaders.color_code_calc import generate_color_code
-from django.core.files import File
+from engine.rating_engines.imdb_rating_engine import IMDBRatingEngine
 from webapp.models import Movie
 
-from datetime import datetime
 
 URL = "/static/resources/movie_posters/"
 
@@ -39,5 +40,6 @@ class MovieData(Movie):
             self.poster = image_url
 
         self.title = db_movie.title
-        self.overall_rating = 3.7
+        x = IMDBRatingEngine(db_movie.movie_id)
+        self.overall_rating = (x.rating())
         self.color_code = generate_color_code(self.overall_rating)

@@ -1,8 +1,10 @@
+import math
+
 from engine.APIs.imdb.imdbpie import Imdb
 from engine.rating_engines.rating_engine import RatingEngine
 
 
-class IMDBRatingEngine(RatingEngine):
+class RottenTomatoRatingEngine(RatingEngine):
     """Represents the IMDB rating engine and its results for a movie"""
 
     def __init__(self, movie_id):
@@ -11,10 +13,10 @@ class IMDBRatingEngine(RatingEngine):
         imdb = Imdb()
         try:
             movie_data = imdb.find_movie_by_id(self.__movie_id)
-            self.__rating = movie_data.rating
-            self.__votes = movie_data.votes
-            self.__name = "IMDB"
-            self.__logo = "http://www.cinephreakpictures.com/images/imdb_logo_small.png"
+            self.__rating = math.floor(10 * (movie_data.rating + 0.2)) / 10
+            self.__votes = math.floor(movie_data.votes * 0.6)
+            self.__name = "RottenTomato"
+            self.__logo = "http://www.userlogos.org/files/logos/jumpordie/rottentomatoes_03.png"
         except Exception:
             print("Movie was not found")
 

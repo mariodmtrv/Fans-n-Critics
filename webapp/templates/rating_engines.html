@@ -1,13 +1,13 @@
 {% block rating_engines %}
-<div id="ratingEnginesData" style="clear:both;background: white">
-    {% for engine_data in ratings %}
-        <div class="btn btn-default" style="float:left;">
-            <img src="{{ engine_data.link_address }}">
-            <br/>
-            <span class="rating"> {{ engine_data.rating }} </span>
-            <br/>
-            <span class="engineVotes"> {{ engine_data.votes }} votes </span>
-        </div>
-    {% endfor %}
-</div>
+    <div id="ratingEnginesData" style="clear:both;background: white">
+        {% for engine_data in ratings %}
+            <div class="btn btn-default" style="float:left;">
+                <img src="{{ engine_data.get_link_address }}">
+                <br/>
+                <span class="rating"> {{ engine_data.get_rating }} </span>
+                <br/>
+                <span class="engineVotes"> {{ engine_data.get_votes }} votes </span>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

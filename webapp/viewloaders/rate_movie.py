@@ -11,6 +11,5 @@ def rate_the_movie(movie_id_str, username, rating):
     movie_instance = list(movies)[0]
     print(movie_instance.title)
     if movie_instance:
-        # UserRatings.objects.filter(username=username, movie_id=movie_instance).delete()
         p = UserRating(username=username, movie=movie_instance, rating=rating)
         p.save()

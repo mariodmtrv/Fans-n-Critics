@@ -1,23 +1,23 @@
 {% block review_table %}
-<table id="ratingsTable" class="table table-striped table-hover "
-       style="background-color:inherit;width:90%;margin-right:15%;font-size:0.9em">
-    <thead>
-    <tr>
-        <th>#</th>
-        <th>Review Url</th>
-        <th style="width:25%">Published Date</th>
-        <th style="width:10%">Rating</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for movie_rating in ratings_table %}
-        <tr class=" {{ movie_rating.color_code }} ">
-            <td>{{ movie_rating.index }}</td>
-            <td><a href="{{ movie_rating.link_address }}"> {{ movie_rating.link_address }}</a></td>
-            <td>{{ movie_rating.date }}</td>
-            <td>{{ movie_rating.rating }}</td>
+    <table id="ratingsTable" class="table table-striped table-hover "
+           style="background-color:inherit;width:90%;margin-right:15%;font-size:0.9em;">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Review Url</th>
+            <th style="width:25%">Published Date</th>
+            <th style="width:10%">Rating</th>
         </tr>
-    {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        {% for movie_rating in ratings_table %}
+            <tr class=" {{ movie_rating.color_code }} ">
+                <td>{{ movie_rating.index }}</td>
+                <td><a href="{{ movie_rating.link_address }}"> {{ movie_rating.link_address }}</a></td>
+                <td>{{ movie_rating.date }}</td>
+                <td>{{ movie_rating.rating }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

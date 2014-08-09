@@ -7,10 +7,12 @@
                         <li class="tile tile-big tile-4 fig-tile" data-page-type="r-page"
                             data-page-name="random-r-page">
                             <figure>
-                                <img src="{{ movie.get_image }}"/>
-                                <figcaption class="tile-caption caption-left"> {{ movie.get_title }} </br></br>
-                                    <p> {{ movie.get_description }} </p></br></br>Rating {{ movie.get_rating }}
-                                </figcaption>
+                                <a href="movies/{{ movie.get_href }}">
+                                    <img src="{{ movie.get_image }}"/>
+                                    <figcaption class="tile-caption caption-left"> {{ movie.get_title }} </br></br>
+                                        <p> {{ movie.get_description }} </p></br></br>Rating {{ movie.get_rating }}
+                                    </figcaption>
+                                </a>
                             </figure>
                         </li>
                     {% endfor %}
@@ -22,11 +24,14 @@
                         <li class="tile tile-big tile-4 fig-tile" data-page-type="r-page"
                             data-page-name="random-r-page">
                             <figure>
-                                <img src="{{ movie.get_image }}"/>
-                                <figcaption class="tile-caption caption-left"> {{ movie.get_title }} </br></br>
-                                    <p> {{ movie.get_description }} </p></br></br>Rating {{ movie.get_rating|safe }}
-                                </figcaption>
+                                <a href="movies/{{ movie.get_href }}">
+                                    <img src="{{ movie.get_image }}"/>
+                                    <figcaption class="tile-caption caption-left"> {{ movie.get_title }} </br></br>
+                                        <p> {{ movie.get_description }} </p></br></br>Rating {{ movie.get_rating|safe }}
+                                    </figcaption>
+                                </a>
                             </figure>
+
                         </li>
                     {% endfor %}
                 </div>
@@ -37,10 +42,12 @@
                         <li class="tile tile-big tile-4 fig-tile" data-page-type="r-page"
                             data-page-name="random-r-page">
                             <figure>
-                                <img src="{{ movie.get_image }}"/>
-                                <figcaption class="tile-caption caption-left"> {{ movie.get_title }} </br></br>
-                                    <p> {{ movie.get_description }} </p></br></br>Rating {{ movie.get_rating }}
-                                </figcaption>
+                                <a href="movies/{{ movie.get_href }}">
+                                    <img src="{{ movie.get_image }}"/>
+                                    <figcaption class="tile-caption caption-left"> {{ movie.get_title }} </br></br>
+                                        <p> {{ movie.get_description }} </p></br></br>Rating {{ movie.get_rating }}
+                                    </figcaption>
+                                </a>
                             </figure>
                         </li>
                     {% endfor %}
