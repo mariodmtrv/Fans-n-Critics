@@ -1,24 +1,31 @@
 __author__ = 'mario-dimitrov'
-from django import template
 
-register = template.Library()
 
-from django.template.loader import get_template
-from webapp.models import Movie
-from recommendations.recommendations_generator import RecommendationsGenerator
+class RecommendationTemplate():
+    def __init__(self, image, title, description, rating):
+        self.__image = image
+        self.__title = title
+        self.__description = description
+        self.__rating = rating
+
+    def get_image(self):
+        return self.__image
+
+    def get_title(self):
+        return self.__title
+
+    def get_description(self):
+        return self.__description
+
+    def get_rating(self):
+        return self.__rating
 
 
 def recommend(user):
     #generator = RecommendationsGenerator(user)
     """TODO"""
 
-    class Result():
-        image = '../static/images/men.jpg'
-        title = "Two and a half"
-        description = 'A well known sitcom'
-        rating = '7.5'
-
-    p = Result()
+    p = RecommendationTemplate("image", "title", "description", "7.7")
     rec_column_one = [p]
     rec_column_two = [p]
     rec_column_three = [p]

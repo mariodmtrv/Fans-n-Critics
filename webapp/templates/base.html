@@ -27,7 +27,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand"><img src="{{ STATIC_URL }}/images/product/Fans+Critics-Logo.png"
-                                                  style="height:50px"></a>
+                                         style="height:50px"></a>
         </div>
         <div class="navbar-collapse collapse navbar-inverse-collapse">
             <ul class="nav navbar-nav">
@@ -66,21 +66,21 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account </a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Settings</a></li>
-                            <li><a href="#">Preferences</a></li>
                             <li class="divider"></li>
                             <form action="/logout/" method="post" accept-charset="UTF-8">
                                 {% csrf_token %}
-                                <input class="btn btn-danger" style="clear: left; width: 100%; height: 32px; font-size: 13px;"
-                               type="submit" name="commit" value="Logout"/>
+                                <input class="btn btn-danger"
+                                       style="clear: left; width: 100%; height: 32px; font-size: 13px;"
+                                       type="submit" name="commit" value="Logout"/>
                             </form>
                         </ul>
                         {% else %}
                     </li>
                     <li>
-                    <!-- Button to trigger modal -->
-                    <a href="#myModal" role="button" class="btn" data-toggle="modal">Register</a>
+                        <!-- Button to trigger modal -->
+                        <a href="#myModal" role="button" class="btn" data-toggle="modal">Register</a>
 
-                    {% include "register.html" %}
+                        {% include "register.html" %}
 
                     </li>
                     <li class="dropdown">
@@ -90,7 +90,7 @@
                     <ul class="dropdown-menu">
 
                     <form style="padding: 15px;" action="/login/" method="post" accept-charset="UTF-8">
-                    {% csrf_token %}
+                        {% csrf_token %}
                         <input id="user_username" style="margin-bottom: 15px;" type="text" name="username"
                                placeholder="Username" size="30"/>
                         <input id="user_password" style="margin-bottom: 15px;" type="password" name="password"
@@ -103,12 +103,13 @@
                 </li>
             </ul>
         </div>
-    {% if should_show_message == "true" %}
-  <div class="alert alert-warning alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-  <strong>{{ message_header }}</strong> {{ message_content }}
-      {% endif %}
-</div>
+        {% if should_show_message == "true" %}
+            <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span
+                    class="sr-only">Close</span></button>
+            <strong>{{ message_header }}</strong> {{ message_content }}
+        {% endif %}
+        </div>
     </nav>
     <!--End Navigation bar-->
 </header>
@@ -116,49 +117,49 @@
     {% block content %}
         <div id="movieContent" style="float:left;width:73%;height: 600px">
             <div class="bs-example">
-    <div id="displayCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
-    	<!-- Carousel indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <!-- Carousel items -->
-        <div class="carousel-inner">
-            <div class="active item">
-               <img src="{{ STATIC_URL }}images/grand-budapest-hotel.png"/>
-            </div>
-            <div class="item">
-                <div class="active item">
-                <img src="{{ STATIC_URL }}images/les.jpg"/>
+                <div id="displayCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+                    <!-- Carousel indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+                        <div class="active item">
+                            <img src="{{ STATIC_URL }}images/grand-budapest-hotel.png"/>
+                        </div>
+                        <div class="item">
+                            <div class="active item">
+                                <img src="{{ STATIC_URL }}images/les.jpg"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="active item">
+                                <img src="{{ STATIC_URL }}images/postera.jpg"/>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carousel nav -->
+                    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
                 </div>
             </div>
-            <div class="item">
-                <div class="active item">
-               <img src="{{ STATIC_URL }}images/postera.jpg"/>
-            </div>
-            </div>
-        </div>
-        <!-- Carousel nav -->
-        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <a class="carousel-control right" href="#myCarousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
-    </div>
-</div>
         </div>
     {% endblock %}
 
 </article>
 <aside id="additionalMenu" style="float:right;max-width:20%;margin-right:5%;">
-<img src="{{ STATIC_URL }}/images/vertical-banner.png">
+    <img src="{{ STATIC_URL }}/images/vertical-banner.png">
 </aside>
 <!-- Movie view-->
 <section>
     {% if user.is_authenticated %}
-       {% include 'recommendations.html' %}
+        {% include 'recommendations.html' %}
     {% endif %}
 </section>
 }

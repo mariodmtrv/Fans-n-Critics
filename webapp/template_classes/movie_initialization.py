@@ -1,7 +1,5 @@
-from Fans_n_Critics import settings
 from webapp.models import Movie, MovieGenre
-import datetime
-from movie_data_extraction.movie_finder.description_provider \
+from engine.movie_finder.description_provider \
     import DescriptionProvider
 
 __author__ = 'mario-dimitrov'

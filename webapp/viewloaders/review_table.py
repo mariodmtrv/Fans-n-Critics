@@ -1,13 +1,13 @@
 __author__ = 'mario-dimitrov'
 from django import template
-from movie_data_extraction.review_provision.review_crawler import ReviewCrawler
-from webapp.models import Movie
+
+from engine.review_provision.review_crawler import ReviewCrawler
+
 
 register = template.Library()
-from django.template.loader import get_template
 from webapp.viewloaders.color_code_calc import generate_color_code
-from movie_data_extraction.review_provision.review_ranker import ReviewRanker
-from movie_data_extraction.review_provision.review_parser import ReviewParser
+from engine.review_provision.review_ranker import ReviewRanker
+from engine.review_provision.review_parser import ReviewParser
 
 
 class MovieReview():

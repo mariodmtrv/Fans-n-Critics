@@ -4,9 +4,6 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
-from movie_data_extraction.rating_engines import rating_engine
-from webapp.models import UserRating
 
 from webapp.viewloaders.rate_movie import rate_the_movie
 from webapp.viewloaders.movie_data import generate_movie_data
@@ -14,6 +11,7 @@ from webapp.viewloaders.rating_engines import generate_rating_data
 from webapp.viewloaders.review_table import generate_review_table
 from webapp.viewloaders.generate_alternatives import Alternatives
 from webapp.viewloaders.generate_recommendations_list import generate_list
+from webapp.viewloaders.create_user import create_user
 
 
 def index(request):
@@ -46,25 +44,17 @@ def register(request):
     password = request.POST.get('password')
     password_confirmation = request.POST.get('password_confirmation')
 
-    if password and password == password_confirmation:
-        count = User.objects.filter(username=username).count()
-        if count > 0:
-            return render_to_response('base.html',
-                                      {"should_show_message": "true",
+    created = create_user(username, password, password_confirmation, email, first_name, last_name)
+    if (not created):
+        return render_to_response('base.html',
+                                  {"should_show_message": "true",
                                        "message_header": "Failed", "message_content": "This username exists"},
                                       context_instance=RequestContext(request))
-        else:
-            user = User()
-            user.password = password
-            user.first_name = first_name
-            user.last_name = last_name
-            user.email = email
-            user.username = username
-            user.save()
-            return render_to_response('base.html',
-                                      {"should_show_message": "true", "message_header": "Created user " + username,
-                                       "message_content": "Your account has been confirmed. Now you may login."},
-                                      context_instance=RequestContext(request))
+    else:
+        return render_to_response('base.html',
+                                  {"should_show_message": "true", "message_header": "Created user " + username,
+                                   "message_content": "Your account has been confirmed. Now you may login."},
+                                  context_instance=RequestContext(request))
     return render_to_response('base.html', context_instance=RequestContext(request))
 
 

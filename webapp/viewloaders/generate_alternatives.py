@@ -1,6 +1,6 @@
 __author__ = 'mario-dimitrov'
 
-from movie_data_extraction.movie_finder.movie_search import MovieSearch
+from engine.movie_finder.movie_search import MovieSearch
 
 
 class Alternatives():

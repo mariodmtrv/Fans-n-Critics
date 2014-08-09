@@ -37,8 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'webapp',
-    'movie_data_extraction',
-    'recommendations'
+    'engine',
+    'engine.recommendations'
 )
 
 MIDDLEWARE_CLASSES = (
