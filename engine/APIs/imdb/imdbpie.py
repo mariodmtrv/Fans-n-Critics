@@ -6,8 +6,6 @@ import re
 import requests
 
 
-
-
 # handle python 2 and python 3 imports
 try:
     from urllib.parse import urlencode

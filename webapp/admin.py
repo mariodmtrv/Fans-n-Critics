@@ -1,5 +1,6 @@
 from django.contrib import admin
-from webapp.models import RatingEngine, Movie, UserRating, MovieReview, MovieGenre
+from webapp.models import RatingEngine, Movie, \
+    UserRating, MovieReview, MovieGenre
 
 
 class UserRatingAdmin(admin.ModelAdmin):

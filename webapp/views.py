@@ -17,9 +17,11 @@ def index(request):
     if request.user.is_authenticated():
         recommendations = generate_list(request.user.username)
         return render_to_response('base.html',
-                                  recommendations, context_instance=RequestContext(request))
+                                  recommendations,
+                                  context_instance=RequestContext(request))
     else:
-        return render_to_response('base.html', context_instance=RequestContext(request))
+        return render_to_response('base.html',
+                                  context_instance=RequestContext(request))
 
 
 '''
@@ -31,7 +33,8 @@ and repacks the result for the template
 def search(request):
     query = request.GET['q']
     alternatives_result = Alternatives.generate_alternatives(query)
-    return render_to_response('base.html', {'alternatives': alternatives_result},
+    return render_to_response('base.html', {'alternatives':
+                                                alternatives_result},
                               context_instance=RequestContext(request))
 
 
@@ -47,16 +50,23 @@ def register(request):
         username, password, password_confirmation, email, first_name,
         last_name)
     if (not created):
-        return render_to_response('base.html',
-                                  {"should_show_message": "true",
-                                   "message_header": "Failed", "message_content": "This username exists"},
-                                  context_instance=RequestContext(request))
+        return render_to_response \
+            ('base.html',
+             {"should_show_message": "true",
+              "message_header": "Failed",
+              "message_content": "This username exists"},
+             context_instance=RequestContext(request))
     else:
         return render_to_response('base.html',
-                                  {"should_show_message": "true", "message_header": "Created user " + username,
-                                   "message_content": "Your account has been confirmed. Now you may login."},
+                                  {"should_show_message": "true",
+                                   "message_header":
+                                       "Created user " + username,
+                                   "message_content":
+                                       "Your account has been confirmed. "
+                                       "Now you may login."},
                                   context_instance=RequestContext(request))
-    return render_to_response('base.html', context_instance=RequestContext(request))
+    return render_to_response('base.html',
+                              context_instance=RequestContext(request))
 
 
 def rate_movie(request):
@@ -66,7 +76,8 @@ def rate_movie(request):
     rating = request.POST['rating']
     rate_the_movie(movie_id, username, rating)
     parameters = {"should_show_message": "true",
-                  "message_header": "Success", "message_content": "Thank you for your vote"}
+                  "message_header": "Success", "message_content":
+        "Thank you for your vote"}
     movie_data = generate_all_movie_parameters(movie_id)
     recommendations = generate_list(request.user.username)
     return render_to_response("movie-article.html",
@@ -83,8 +94,11 @@ def movie_info(request, id):
     parameters = generate_all_movie_parameters(movie_res_id)
     if request.user.is_authenticated():
         recommendations = generate_list(request.user.username)
-        return render_to_response("movie-article.html", dict(list(parameters.items()) + list(recommendations.items())),
-                                  context_instance=RequestContext(request))
+        return render_to_response \
+            ("movie-article.html",
+             dict(list(parameters.items())
+                  + list(recommendations.items())),
+             context_instance=RequestContext(request))
     else:
         return render_to_response("movie-article.html", parameters,
                                   context_instance=RequestContext(request))
@@ -105,19 +119,24 @@ def login_view(request):
                            "message_content": "Oh, yeah, welcome " + username,
             }
 
-            return render_to_response('base.html', dict(list(recommendations.items()) + list(success_log.items())),
+            return render_to_response('base.html',
+                                      dict(list(recommendations.items())
+                                           + list(success_log.items())),
                                       context_instance=RequestContext(request))
         else:
-            return render_to_response('base.html',
-                                      {"should_show_message": "true", "message_header": "Failed",
-                                       "message_content": "Authentication failed for user " + username +
-                                                          ". Please check your data and try again"},
-                                      context_instance=RequestContext(request))
+            return render_to_response \
+                ('base.html',
+                 {"should_show_message": "true", "message_header": "Failed",
+                  "message_content":
+                      "Authentication failed for user " + username +
+                      ". Please check your data and try again"},
+                 context_instance=RequestContext(request))
 
 
 def logout_view(request):
     logout(request)
-    return render_to_response('base.html', context_instance=RequestContext(request))
+    return render_to_response('base.html',
+                              context_instance=RequestContext(request))
 
 
 def failed(request):
