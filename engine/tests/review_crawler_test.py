@@ -14,7 +14,8 @@ class ReviewCrawlerTest(unittest.TestCase):
         crawler = ReviewCrawler()
 
         dir = os.path.dirname(__file__)
-        filepath = os.path.join(dir, "test_data/review_crawler_response.json")
+        filepath = os.path.join(
+            dir, "test_data/review_crawler_response.json")
 
         with open(filepath, 'r') as response_file:
             string_response = response_file.read()
@@ -24,12 +25,13 @@ class ReviewCrawlerTest(unittest.TestCase):
             self.assertEqual(expected, actual)
 
     def test_url_f(self):
-        req = requests.get('http://www.rottentomatoes.com/m/monty_python_and_the_holy_grail/')
+        req = requests.get(
+            'http://www.rottentomatoes.com/m/monty_python_and_the_holy_grail/')
         #req = Request('http://www.rottentomatoes.com/m/monty_python_and_the_holy_grail/')
         #webpage = urlopen(req).read()
         self.assertEqual(200, req.status_code)
-        #info=response.info()
-        #return info['Date']
+        # info=response.info()
+        # return info['Date']
 
 
 if __name__ == '__main__':

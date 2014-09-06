@@ -4,7 +4,8 @@ from webapp.template_classes.recommendations import recommend
 
 def generate_list(username):
     recommendations = recommend(username)
-    recommendations_list = {"rec_column_one": recommendations.get("rec_column_one"),
-                            "rec_column_two": recommendations.get("rec_column_two"),
-                            "rec_column_three": recommendations.get("rec_column_three")}
+    recommendations_list = {
+        "rec_column_one": recommendations.get("rec_column_one"),
+        "rec_column_two": recommendations.get("rec_column_two"),
+        "rec_column_three": recommendations.get("rec_column_three")}
     return recommendations_list

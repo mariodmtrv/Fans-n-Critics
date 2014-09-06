@@ -16,10 +16,12 @@ class AttitudeRanker():
         files_full_path = os.path.join(dir, files_relative_path)
 
         positive_file = os.path.join(files_full_path, 'positive-words.txt')
-        self.__positives = AttitudeRanker.__read_attitude_file(positive_file)
+        self.__positives = AttitudeRanker.__read_attitude_file(
+            positive_file)
 
         negative_file = os.path.join(files_full_path, 'negative-words.txt')
-        self.__negatives = AttitudeRanker.__read_attitude_file(negative_file)
+        self.__negatives = AttitudeRanker.__read_attitude_file(
+            negative_file)
 
     @staticmethod
     def __read_attitude_file(file_path):
@@ -27,7 +29,6 @@ class AttitudeRanker():
             file_data = attitude_file.read().split()
             result_set = set(file_data)
             return result_set
-
 
     def categorize_word(self, word):
         """

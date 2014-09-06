@@ -10,7 +10,8 @@ from engine.tests.review_ranker_test import ReviewRankerTest
 
 def suite():
     suite = unittest.TestSuite()
-    suite.addTests(ReviewParserTest(), ReviewRankerTest(), AttitudeRankerTest(), ReviewCrawlerTest())
+    suite.addTests(ReviewParserTest(), ReviewRankerTest(),
+                   AttitudeRankerTest(), ReviewCrawlerTest())
     return suite
 
 

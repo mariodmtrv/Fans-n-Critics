@@ -1,7 +1,8 @@
 from django.test import TestCase
 
 from webapp.viewloaders.color_code_calc import generate_color_code
-from engine.recommendations.recommendations_generator import RecommendationsGenerator
+from engine.recommendations.recommendations_generator import \
+    RecommendationsGenerator
 
 
 class ColorCodingTest(TestCase):

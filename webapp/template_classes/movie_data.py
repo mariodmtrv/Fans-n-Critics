@@ -33,9 +33,11 @@ class MovieData(Movie):
             db_movie.poster = ""
         else:
             "Loads the image from the url and stores it to the system storage"
-            image_url = db_movie.title + db_movie.released.strftime('%m%d%Y') + ".jpg"
-            with urllib.request.urlopen(db_movie.poster) as response, open("webapp" + URL + image_url,
-                                                                           'wb') as out_file:
+            image_url = db_movie.title + \
+                        db_movie.released.strftime('%m%d%Y') + ".jpg"
+            with urllib.request.urlopen(db_movie.poster) as response, open(
+                                    "webapp" + URL + image_url,
+                                    'wb') as out_file:
                 shutil.copyfileobj(response, out_file)
             self.poster = image_url
 

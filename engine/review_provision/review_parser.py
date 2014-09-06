@@ -32,7 +32,8 @@ class ReviewParser():
 
     @staticmethod
     def __visible(element):
-        if element.parent.name in ['style', 'script', '[document]', 'head', 'title', 'iframe']:
+        if element.parent.name in ['style', 'script', '[document]', 'head',
+                                   'title', 'iframe']:
             return False
         elif re.match('<!--.*-->', str(element)):
             return False
@@ -47,20 +48,15 @@ class ReviewParser():
 
     @staticmethod
     def __extract_words(texts):
-        #Extracts the tokens from every element
+        # Extracts the tokens from every element
         result = map(lambda text: text.split(), texts)
         tokenized_lists = list(result)
         # Flattens the list
-        merged_list = [item for sublist in tokenized_lists for item in sublist]
+        merged_list = [
+            item for sublist in tokenized_lists for item in sublist]
         _digits = re.compile('\d')
 
         # Does not contain simple stopwords or digits
-        words_list = [item for item in merged_list if len(item) > 2 and not bool(_digits.search(item))]
+        words_list = [item for item in merged_list if len(
+            item) > 2 and not bool(_digits.search(item))]
         return list(words_list)
-
-
-
-
-
-
-

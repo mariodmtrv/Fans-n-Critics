@@ -2,7 +2,8 @@ __author__ = 'mario-dimitrov'
 from django import template
 
 from engine.rating_engines.imdb_rating_engine import IMDBRatingEngine
-from engine.rating_engines.rotten_tomato_rating_engine import RottenTomatoRatingEngine
+from engine.rating_engines.rotten_tomato_rating_engine import \
+    RottenTomatoRatingEngine
 
 
 register = template.Library()

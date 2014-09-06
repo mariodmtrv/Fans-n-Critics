@@ -12,6 +12,7 @@ from webapp.viewloaders.generate_alternatives import Alternatives
 from webapp.viewloaders.generate_recommendations_list import generate_list
 from webapp.viewloaders.create_user import create_user
 
+
 def index(request):
     if request.user.is_authenticated():
         recommendations = generate_list(request.user.username)
@@ -42,7 +43,9 @@ def register(request):
     password = request.POST.get('password')
     password_confirmation = request.POST.get('password_confirmation')
 
-    created = create_user(username, password, password_confirmation, email, first_name, last_name)
+    created = create_user(
+        username, password, password_confirmation, email, first_name,
+        last_name)
     if (not created):
         return render_to_response('base.html',
                                   {"should_show_message": "true",
@@ -67,7 +70,10 @@ def rate_movie(request):
     movie_data = generate_all_movie_parameters(movie_id)
     recommendations = generate_list(request.user.username)
     return render_to_response("movie-article.html",
-                              dict(list(parameters.items()) + list(recommendations.items()) + list(movie_data.items())),
+                              dict(
+                                  list(parameters.items()) + list(
+                                      recommendations.items()) + list(
+                                      movie_data.items())),
                               context_instance=RequestContext(request))
 
 

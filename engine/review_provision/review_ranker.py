@@ -12,13 +12,19 @@ class ReviewRanker():
 
     def __calculate_word_ranks(self):
         ranker = AttitudeRanker()
-        ranks = [ranker.categorize_word(word) for word in self.__words_list]
-        self.__positive_count = len([rank for rank in ranks if rank == AttitudeRanker.POSITIVE])
-        self.__negative_count = len([rank for rank in ranks if rank == AttitudeRanker.NEGATIVE])
+        ranks = [ranker.categorize_word(word)
+                 for word in self.__words_list]
+        self.__positive_count = len(
+            [rank for rank in ranks if rank == AttitudeRanker.POSITIVE])
+        self.__negative_count = len(
+            [rank for rank in ranks if rank == AttitudeRanker.NEGATIVE])
 
     def calculate_review_rank(self):
         self.__calculate_word_ranks()
-        rank = 5.0 + math.log(self.__positive_count / self.__negative_count, self.__LOG_BASE)
+        rank = 5.0 + \
+               math.log(
+                   self.__positive_count / self.__negative_count,
+                   self.__LOG_BASE)
         rank = min(rank, 10.0)
         rank = max(rank, 1.0)
 

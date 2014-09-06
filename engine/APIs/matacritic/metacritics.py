@@ -30,7 +30,8 @@ class Query(object):
                        Category.TV: self.base_url + "tv",
                        Category.PERSON: self.base_url + "person",
                        Category.TRAILER: self.base_url + "trailer",
-                       Category.COMPANY: self.base_url + "company"}[self.category]
+                       Category.COMPANY: self.base_url + "company"}[
+            self.category]
         self.url = partial_url + "/" + terms + "/results"
 
     # Returns the URL of the created query
@@ -40,7 +41,8 @@ class Query(object):
 
 # This class represents a generic resource found at Metacritic
 class Resource(object):
-    def __init__(self, name, date, category, metascore, userscore, description):
+    def __init__(self, name, date, category, metascore, userscore,
+                 description):
         self.name = name
         self.date = date
         self.category = category
@@ -50,8 +52,10 @@ class Resource(object):
 
 
 class Game(Resource):
-    def __init__(self, name, date, category, metascore, userscore, description, platform):
-        super.__init__(name, date, category, metascore, userscore, description)
+    def __init__(self, name, date, category, metascore, userscore, description,
+                 platform):
+        super.__init__(
+            name, date, category, metascore, userscore, description)
         self.platform = platform
 
 
@@ -119,7 +123,8 @@ class Scraper(object):
         return float(score)
 
     def _extract_description(self):
-        section = self.soup.select(".product_summary")[0].select(".data")[0]
+        section = self.soup.select(
+            ".product_summary")[0].select(".data")[0]
         collapsed = section.select(".blurb_collapsed")
         description = ""
         if (collapsed):  # There's a collapse/expand button

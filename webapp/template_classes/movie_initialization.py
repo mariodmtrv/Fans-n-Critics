@@ -29,7 +29,8 @@ def create_movie_genre_list(movie, string_genre_list):
     for genre in string_genre_list:
         try:
             movie_genre_id = GENRES.get(genre)
-            movie_genre_entry = MovieGenre(movie=movie, genre_id=movie_genre_id)
+            movie_genre_entry = MovieGenre(
+                movie=movie, genre_id=movie_genre_id)
             movie_genre_entry.save()
         except:
             pass

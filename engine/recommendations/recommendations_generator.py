@@ -48,4 +48,3 @@ class RecommendationsGenerator():
 
     def get_recommendations(self):
         return self.movies[:6]
-

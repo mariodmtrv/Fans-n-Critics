@@ -7,6 +7,7 @@ import requests
 
 
 
+
 # handle python 2 and python 3 imports
 try:
     from urllib.parse import urlencode
@@ -61,13 +62,15 @@ class Imdb(object):
         if 'error' in result:
             return False
         # if the result is a re-dir, see imdb id tt0000021 for e.g...
-        if result["data"].get('tconst') != result["data"].get('news').get('channel'):
+        if result["data"].get('tconst') != result["data"].get('news').get(
+                'channel'):
             return False
 
         # get the full cast information, add key if not present
         result["data"][str("credits")] = self.get_credits(imdb_id)
 
-        if self.exclude_episodes is True and result["data"].get('type') == 'tv_episode':
+        if self.exclude_episodes is True and result["data"].get(
+                'type') == 'tv_episode':
             return False
         elif json is True:
             return result["data"]
@@ -129,12 +132,14 @@ class Imdb(object):
 
         html_unescape = htmlparser.HTMLParser().unescape
 
-        # Loop through all results and build a list with popular matches first
+        # Loop through all results and build a list with popular matches
+        # first
         for key in keys:
             if key in results:
                 for r in results[key]:
                     year = None
-                    year_match = re.search(r'(\d{4})', r['title_description'])
+                    year_match = re.search(
+                        r'(\d{4})', r['title_description'])
                     if year_match:
                         year = year_match.group(0)
 
@@ -204,7 +209,8 @@ class Person(object):
         self.job = person.get('job')
 
     def __repr__(self):
-        return '<Person: {0} ({1})>'.format(self.name.encode('utf-8'), self.imdb_id)
+        return '<Person: {0} ({1})>'.format(self.name.encode('utf-8'),
+                                            self.imdb_id)
 
 
 class Title(object):
@@ -241,11 +247,13 @@ class Title(object):
                 self.data['image']['url'].replace('.jpg', ''))
 
         self.release_date = None
-        if 'release_date' in self.data and 'normal' in self.data['release_date']:
+        if 'release_date' in self.data and 'normal' in self.data[
+            'release_date']:
             self.release_date = self.data['release_date']['normal']
 
         self.certification = None
-        if 'certificate' in self.data and 'certificate' in self.data['certificate']:
+        if 'certificate' in self.data and 'certificate' in self.data[
+            'certificate']:
             self.certification = self.data['certificate']['certificate']
 
         self.trailer_img_url = None

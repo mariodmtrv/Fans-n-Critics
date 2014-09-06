@@ -9,12 +9,14 @@ class MovieSearchTest(unittest.TestCase):
         finder = MovieSearch()
         actual = finder.get_alternatives_list(
             "Monty Python & the Holy Grail Location Report", 40000)
-        expected = [{'title': 'Monty Python & the Holy Grail Location Report', 'year': '1974', 'imdb_id': 'tt0372432'},
+        expected = [{'title': 'Monty Python & the Holy Grail Location Report',
+                     'year': '1974', 'imdb_id': 'tt0372432'},
                     {'title': 'Monty Python & the Holy Grail in Lego',
                      'year': '2001', 'imdb_id': 'tt0353751'},
                     {'title': 'Monty Python and the Holy Grail',
                      'year': '1975', 'imdb_id': 'tt0071853'},
-                    {'title': 'Monty Python & the Quest for the Holy Grail', 'year': '1996', 'imdb_id': 'tt0151625'}]
+                    {'title': 'Monty Python & the Quest for the Holy Grail',
+                     'year': '1996', 'imdb_id': 'tt0151625'}]
         print(expected[0].get('title'))
         self.assertEqual(actual, expected)
 

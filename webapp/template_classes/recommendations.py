@@ -1,5 +1,6 @@
 __author__ = 'mario-dimitrov'
-from engine.recommendations.recommendations_generator import RecommendationsGenerator
+from engine.recommendations.recommendations_generator import \
+    RecommendationsGenerator
 from webapp.template_classes.movie_data import URL
 from webapp.models import Movie
 
@@ -31,10 +32,11 @@ class RecommendationTemplate():
 class RecommendationsAdapter(RecommendationTemplate):
     def __init__(self, movie):
         movie_rating = 7.5
-        print(movie.title)
-        image_url = movie.title + movie.released.strftime('%m%d%Y') + ".jpg"
+        image_url = movie.title + \
+                    movie.released.strftime('%m%d%Y') + ".jpg"
         RecommendationTemplate.__init__(self, URL + image_url,
-                                        movie.title, movie.description[:50] + "...",
+                                        movie.title, movie.description[
+                                                     :50] + "...",
                                         movie_rating, movie.movie_id)
 
 
@@ -49,4 +51,5 @@ def recommend(user):
     rec_column_two = viewable_results[2:4]
     rec_column_three = viewable_results[4:6]
     return {'rec_column_one': rec_column_one,
-            'rec_column_two': rec_column_two, 'rec_column_three': rec_column_three}
+            'rec_column_two': rec_column_two,
+            'rec_column_three': rec_column_three}

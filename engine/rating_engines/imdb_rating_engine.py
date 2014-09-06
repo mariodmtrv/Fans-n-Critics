@@ -18,7 +18,6 @@ class IMDBRatingEngine(RatingEngine):
         except Exception:
             print("Movie was not found")
 
-
     def rating(self):
         return self.__rating
 
