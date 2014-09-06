@@ -50,12 +50,11 @@ def register(request):
         username, password, password_confirmation, email, first_name,
         last_name)
     if (not created):
-        return render_to_response \
-            ('base.html',
-             {"should_show_message": "true",
-              "message_header": "Failed",
-              "message_content": "This username exists"},
-             context_instance=RequestContext(request))
+        return render_to_response('base.html',
+                                  {"should_show_message": "true",
+                                   "message_header": "Failed",
+                                   "message_content": "This username exists"},
+                                  context_instance=RequestContext(request))
     else:
         return render_to_response('base.html',
                                   {"should_show_message": "true",
@@ -94,11 +93,10 @@ def movie_info(request, id):
     parameters = generate_all_movie_parameters(movie_res_id)
     if request.user.is_authenticated():
         recommendations = generate_list(request.user.username)
-        return render_to_response \
-            ("movie-article.html",
-             dict(list(parameters.items())
-                  + list(recommendations.items())),
-             context_instance=RequestContext(request))
+        return render_to_response("movie-article.html",
+                                  dict(list(parameters.items())
+                                       + list(recommendations.items())),
+                                  context_instance=RequestContext(request))
     else:
         return render_to_response("movie-article.html", parameters,
                                   context_instance=RequestContext(request))
@@ -124,13 +122,15 @@ def login_view(request):
                                            + list(success_log.items())),
                                       context_instance=RequestContext(request))
         else:
-            return render_to_response \
-                ('base.html',
-                 {"should_show_message": "true", "message_header": "Failed",
-                  "message_content":
-                      "Authentication failed for user " + username +
-                      ". Please check your data and try again"},
-                 context_instance=RequestContext(request))
+            return render_to_response('base.html',
+                                      {"should_show_message":
+                                           "true", "message_header": "Failed",
+                                       "message_content":
+                                           "Authentication failed for user "
+                                           + username +
+                                           ". "
+                                           "Please check your data and try again"},
+                                      context_instance=RequestContext(request))
 
 
 def logout_view(request):

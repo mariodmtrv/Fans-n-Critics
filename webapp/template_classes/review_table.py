@@ -46,12 +46,12 @@ def generate_review_table(movie_res_id):
 
 def obtain_review_data(movie_data):
     crawler = ReviewCrawler()
-    # try:
+    #try:
     crawler.search_query(movie_data.title)
     reviews_count = crawler.get_results_count()
     actual_review_index = 0
     for review_index in range(0, reviews_count):
-        # try:
+        #try:
         review_url = crawler.get_result_url(review_index)
         parser = ReviewParser()
         page_html = parser.extract_page(review_url)

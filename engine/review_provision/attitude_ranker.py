@@ -32,7 +32,8 @@ class AttitudeRanker():
 
     def categorize_word(self, word):
         """
-        Due to a limited dictionary of words only ranks of positive, negative and not available are in present
+        Due to a limited dictionary of words only ranks of positive,
+        negative and not available are in present
         """
         if word in self.__positives:
             return self.POSITIVE

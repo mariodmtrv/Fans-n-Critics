@@ -9,7 +9,8 @@ from engine.review_provision.review_crawler import ReviewCrawler
 class ReviewCrawlerTest(unittest.TestCase):
     def test_search_url_extraction(self):
         '''
-        Mocks an API response to test whether Search results URL extraction is correct
+        Mocks an API response to test whether
+         Search results URL extraction is correct
         '''
         crawler = ReviewCrawler()
 
@@ -20,14 +21,17 @@ class ReviewCrawlerTest(unittest.TestCase):
         with open(filepath, 'r') as response_file:
             string_response = response_file.read()
             crawler.from_response(string_response)
-            expected = 'http://www.rottentomatoes.com/m/monty_python_and_the_holy_grail/'
+            expected = \
+                'http://www.rottentomatoes.com/m/' \
+                'monty_python_and_the_holy_grail/'
             actual = crawler.get_result_url(0)
             self.assertEqual(expected, actual)
 
     def test_url_f(self):
         req = requests.get(
             'http://www.rottentomatoes.com/m/monty_python_and_the_holy_grail/')
-        #req = Request('http://www.rottentomatoes.com/m/monty_python_and_the_holy_grail/')
+        # req = Request('http://www.rottentomatoes.com
+        # /m/monty_python_and_the_holy_grail/')
         #webpage = urlopen(req).read()
         self.assertEqual(200, req.status_code)
         # info=response.info()

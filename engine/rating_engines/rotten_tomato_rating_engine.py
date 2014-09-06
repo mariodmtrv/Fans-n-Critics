@@ -16,7 +16,9 @@ class RottenTomatoRatingEngine(RatingEngine):
             self.__rating = math.floor(10 * (movie_data.rating + 0.2)) / 10
             self.__votes = math.floor(movie_data.votes * 0.6)
             self.__name = "RottenTomato"
-            self.__logo = "http://www.userlogos.org/files/logos/jumpordie/rottentomatoes_03.png"
+            self.__logo = \
+                "http://www.userlogos.org/files/" \
+                "logos/jumpordie/rottentomatoes_03.png"
         except Exception:
             print("Movie was not found")
 

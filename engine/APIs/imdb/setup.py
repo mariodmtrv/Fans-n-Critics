@@ -35,7 +35,8 @@ setup(
     version='1.4.4',
     packages=get_packages('imdbpie'),
     package_data=get_package_data('imdbpie'),
-    description='Python IMDB client using the IMDB json web service made available for their iOS app.',
+    description='Python IMDB client using the '
+                'IMDB json web service made available for their iOS app.',
     author='Richard O\'Dwyer',
     author_email='richard@richard.do',
     license='Creative Commons Attribution-Noncommercial-Share Alike license',

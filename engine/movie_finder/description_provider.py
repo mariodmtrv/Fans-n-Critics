@@ -20,7 +20,9 @@ class DescriptionProvider():
             self.__genres = "Unknown"
         self.__poster = movie.poster_url
         if not self.__poster:
-            self.__poster = "http://upload.wikimedia.org/wikipedia/en/f/f9/No-image-available.jpg"
+            self.__poster = \
+                "http://upload.wikimedia.org/wikipedia/" \
+                "en/f/f9/No-image-available.jpg"
         released = self.__get_released_date(movie)
         self.__released = datetime.date(
             int(released[0]), int(released[1]), int(released[2]))

@@ -2,7 +2,8 @@ __author__ = 'mario-dimitrov'
 from webapp.models import UserRating, Movie
 
 '''
-Given the movie_id, username and rating from the form adds or changes the user rating
+Given the movie_id, username and
+rating from the form adds or changes the user rating
 '''
 
 

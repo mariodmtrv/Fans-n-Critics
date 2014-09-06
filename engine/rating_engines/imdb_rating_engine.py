@@ -14,7 +14,8 @@ class IMDBRatingEngine(RatingEngine):
             self.__rating = movie_data.rating
             self.__votes = movie_data.votes
             self.__name = "IMDB"
-            self.__logo = "http://www.cinephreakpictures.com/images/imdb_logo_small.png"
+            self.__logo = \
+                "http://www.cinephreakpictures.com/images/imdb_logo_small.png"
         except Exception:
             print("Movie was not found")
 

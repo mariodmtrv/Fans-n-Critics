@@ -7,7 +7,8 @@ import urllib.parse
 
 class ReviewCrawler():
     '''
-    Performs a website (Google) search with various queries for the given movie and collects the top results
+    Performs a website (Google) search with various queries
+    for the given movie and collects the top results
     '''
 
     def __init__(self):
@@ -27,7 +28,8 @@ class ReviewCrawler():
 
     def __generate_response(self, query_string):
         query = urllib.parse.urlencode({'q': query_string})
-        url = 'http://ajax.googleapis.com/ajax/services/search/web?v=1.0&%s' % query
+        url = 'http://ajax.googleapis.com/ajax/services/search/web?v=1.0&%s' \
+              % query
         search_response = urllib.request.urlopen(url)
         search_results = search_response.read().decode("utf8")
         return search_results
